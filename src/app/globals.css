@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ──────────────────────────────────────── */
+@theme {
+  --color-navy-950: #091e2a;
+  --color-navy-900: #0f2b3c;
+  --color-navy-800: #163a50;
+  --color-navy-700: #1a4a5e;
+  --color-navy-600: #1e5a72;
+  --color-teal-600: #238096;
+  --color-teal-500: #2d8a9e;
+  --color-teal-400: #3da8be;
+  --color-teal-300: #5ec4d8;
+  --color-teal-200: #a0dce8;
+  --color-teal-100: #d4f0f6;
+  --color-teal-50: #ecf8fb;
+  --color-amber-600: #d97706;
+  --color-amber-500: #f59e0b;
+  --color-amber-400: #fbbf24;
+  --color-amber-300: #fcd34d;
+  --color-amber-200: #fde68a;
+  --color-amber-100: #fef3c7;
+  --color-amber-50: #fffbeb;
+  --color-cream-50: #fdf8f0;
+  --color-cream-100: #f5ede0;
+  --color-cream-200: #ece1cc;
+  --color-emerald-500: #10b981;
+  --color-violet-500: #8b5cf6;
+  --color-pink-500: #ec4899;
+
+  --font-heading: "Outfit", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-accent: "Playfair Display", Georgia, serif;
+}
+
+/* ─── Base Styles ─────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #1e293b;
+  background-color: var(--color-cream-50);
+  overflow-x: hidden;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-navy-900);
+    line-height: 1.15;
+  }
+}
+
+/* ─── Floating Math Symbols Background ────────────────────── */
+.math-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.math-bg::before {
+  content: "π  ∫  Σ  ∆  √  ∞  π  ∫  Σ  ∆  √  ∞";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 8rem;
+  font-family: var(--font-accent);
+  color: var(--color-navy-900);
+  opacity: 0.025;
+  letter-spacing: 2rem;
+  line-height: 12rem;
+  word-wrap: break-word;
+  pointer-events: none;
+  z-index: 0;
+  white-space: pre-wrap;
+}
+
+/* ─── Glassmorphism Card ─────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(15, 43, 60, 0.08);
+}
+
+/* ─── Gradient Backgrounds ───────────────────────────────── */
+.gradient-navy {
+  background: linear-gradient(135deg, var(--color-navy-950) 0%, var(--color-navy-700) 100%);
+}
+
+.gradient-teal {
+  background: linear-gradient(135deg, var(--color-teal-600) 0%, var(--color-teal-400) 100%);
+}
+
+.gradient-warm {
+  background: linear-gradient(135deg, var(--color-amber-500) 0%, var(--color-amber-400) 100%);
+}
+
+.gradient-hero {
+  background: linear-gradient(160deg, var(--color-cream-50) 0%, var(--color-teal-50) 40%, var(--color-cream-50) 70%, var(--color-amber-50) 100%);
+}
+
+/* ─── Pill Button Base ───────────────────────────────────── */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-navy-800) 0%, var(--color-teal-600) 100%);
+  color: white;
+  box-shadow: 0 4px 14px rgba(15, 43, 60, 0.25);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(15, 43, 60, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-amber {
+  background: linear-gradient(135deg, var(--color-amber-500) 0%, var(--color-amber-400) 100%);
+  color: var(--color-navy-900);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+}
+
+.btn-amber:hover {
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-navy-700);
+  border: 2px solid var(--color-navy-700);
+}
+
+.btn-outline:hover {
+  background: var(--color-navy-700);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ─── WhatsApp Button ────────────────────────────────────── */
+.btn-whatsapp {
+  background: #25d366;
+  color: white;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+  background: #20bd5a;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  transform: translateY(-2px);
+}
+
+/* ─── Section Spacing ────────────────────────────────────── */
+.section-padding {
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 7rem 2rem;
+  }
+}
+
+/* ─── Animated Underline ─────────────────────────────────── */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-amber-400), var(--color-teal-400));
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.animated-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-teal-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-teal-500);
+}
+
+/* ─── Selection ──────────────────────────────────────────── */
+::selection {
+  background: var(--color-teal-200);
+  color: var(--color-navy-900);
+}

@@ -25,7 +25,7 @@ export default function HomePage() {
       {/* 5. Subjects Overview (Physics, Chemistry, Biology, Mathematics, English) */}
       <SubjectGrid />
 
-      {/* 6. Teaching Team Preview (4 levels + Real Teachers: Pritha, Rudra, Deblina, Arpan, Moulisha, Annesha, Ritobrata, Rahul) */}
+      {/* 6. Teaching Team Preview (4 levels + Real Teachers: Pritha, Rudra, Deblina, Arpan, Moulisha, Annesha, Rahul) */}
       <TeamPreview />
 
       {/* 7. Fee Snapshot + Batch Size Explainer (Exact real fees) */}

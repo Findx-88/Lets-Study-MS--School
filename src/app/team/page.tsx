@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { GraduationCap, Award, Clock, Star, Quote } from "lucide-react";
 import { FACULTY_LEVELS, getWhatsAppUrl } from "@/lib/constants";
 import type { TeacherProfile } from "@/lib/constants";
@@ -9,115 +10,124 @@ export const metadata: Metadata = {
 };
 
 function TeacherCard({ teacher }: { teacher: TeacherProfile }) {
-  const hasFullProfile = Boolean(teacher.degree || teacher.experience || teacher.teachingPhilosophy);
-
   // Get initials (first letter of first + last name)
   const nameParts = teacher.fullName.trim().split(/\s+/);
   const initials = nameParts.length >= 2
     ? `${nameParts[0][0]}${nameParts[nameParts.length - 1][0]}`
     : nameParts[0][0];
 
-  if (!hasFullProfile) {
-    // Minimal card for teachers without detailed profile yet
-    return (
-      <div className="rounded-2xl p-5 border border-slate-200/90 bg-white shadow-[0_4px_16px_-3px_rgba(15,23,42,0.06)] hover:shadow-[0_8px_22px_-4px_rgba(13,148,136,0.12)] hover:border-teal-500/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-4">
-        <div className="w-12 h-12 rounded-full bg-teal-800 text-white font-heading font-black text-sm flex items-center justify-center shrink-0 shadow-xs ring-2 ring-teal-700/20">
-          {initials}
+  return (
+    <div className="rounded-3xl border border-slate-200/90 bg-white shadow-[0_4px_20px_-4px_rgba(15,23,42,0.08)] hover:shadow-[0_16px_36px_-6px_rgba(13,148,136,0.18)] hover:border-teal-500/50 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+      {/* Circular Avatar Header Area */}
+      <div className="pt-6 pb-2 px-6 flex flex-col items-center text-center bg-gradient-to-b from-slate-50/70 via-white to-white">
+        <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-md bg-slate-100 ring-2 ring-teal-500/30 shrink-0 group-hover:ring-teal-500/70 group-hover:scale-105 transition-all duration-300">
+          {teacher.image ? (
+            <Image
+              src={teacher.image}
+              alt={teacher.fullName}
+              fill
+              className={`object-cover ${teacher.imagePosition || "object-[center_15%]"} transition-transform duration-500 ease-out`}
+              sizes="(max-width: 640px) 112px, 128px"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-navy-950 via-teal-950 to-teal-900 flex flex-col items-center justify-center text-center">
+              <div className="text-white font-heading font-black text-2xl tracking-wider">
+                {initials}
+              </div>
+            </div>
+          )}
         </div>
-        <div>
-          <p className="text-base font-bold font-heading text-navy-950">{teacher.fullName}</p>
-          <span className="inline-block mt-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200/70">
+
+        {/* Educator Role Tag & Full Name */}
+        <div className="mt-4">
+          <span className="inline-block text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200/70 mb-1.5">
             {teacher.tag}
           </span>
+          <h4 className="text-xl font-black font-heading text-navy-950 leading-tight group-hover:text-teal-900 transition-colors">
+            {teacher.fullName}
+          </h4>
         </div>
       </div>
-    );
-  }
 
-  return (
-    <div className="rounded-2xl border border-slate-200/90 bg-white shadow-[0_4px_16px_-3px_rgba(15,23,42,0.07)] hover:shadow-[0_12px_26px_-4px_rgba(13,148,136,0.14)] hover:border-teal-500/50 hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
       {/* Main Content Area */}
-      <div className="p-4 sm:p-6 space-y-3.5 sm:space-y-4">
-        {/* Top Header: Avatar + Full Name + Role Tag */}
-        <div className="flex items-start gap-3.5">
-          <div className="w-13 h-13 rounded-full bg-teal-800 text-white font-heading font-black text-base flex items-center justify-center shrink-0 shadow-sm ring-2 ring-teal-700/20 group-hover:scale-105 transition-transform">
-            {initials}
-          </div>
-          <div className="min-w-0 flex-1">
-            <h4 className="text-lg font-black font-heading text-navy-950 leading-snug">
-              {teacher.fullName}
-            </h4>
-            <span className="inline-block mt-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200/80">
-              {teacher.tag}
-            </span>
-          </div>
-        </div>
-
-        {/* Credentials Badges */}
-        <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-100">
-          {teacher.degree && (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80 text-xs font-semibold text-slate-700">
-              <GraduationCap size={14} className="text-teal-700 shrink-0" />
-              <span>{teacher.degree}</span>
-            </span>
-          )}
-          {teacher.experience && (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80 text-xs font-semibold text-slate-700">
-              <Clock size={13} className="text-teal-700 shrink-0" />
-              <span>{teacher.experience} Exp</span>
-            </span>
-          )}
-        </div>
-
-        {/* Subjects & Boards Box */}
-        {teacher.subjects && (
-          <div className="bg-slate-50/70 p-3 rounded-xl border border-slate-100 space-y-1">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-teal-800 block">
-              Subjects & Coverage
-            </span>
-            <p className="text-xs font-bold text-navy-950 leading-relaxed">
-              {teacher.subjects}
-            </p>
-            {teacher.boards && (
-              <p className="text-[11px] font-medium text-slate-600">
-                Boards: <span className="text-slate-800 font-semibold">{teacher.boards}</span>
-              </p>
-            )}
-          </div>
-        )}
-
-        {/* Achievements */}
-        {(teacher.achievements || teacher.studentAchievements) && (
-          <div className="space-y-1.5 text-xs">
-            {teacher.achievements && (
-              <div className="flex items-start gap-1.5 text-slate-700">
-                <Award size={14} className="text-teal-700 shrink-0 mt-0.5" />
-                <span className="font-semibold text-navy-900">{teacher.achievements}</span>
-              </div>
-            )}
-            {teacher.studentAchievements && (
-              <div className="flex items-start gap-1.5 text-slate-600">
-                <Star size={14} className="text-amber-600 shrink-0 mt-0.5" />
-                <span>
-                  Students: <strong className="text-slate-800">{teacher.studentAchievements}</strong>
+      <div className="p-5 sm:p-6 pt-1 space-y-4 flex-1 flex flex-col justify-between">
+        <div className="space-y-3.5">
+          {/* Credentials Badges */}
+          {(teacher.degree || teacher.experience) && (
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-2 border-t border-slate-100">
+              {teacher.degree && (
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80 text-xs font-semibold text-slate-700">
+                  <GraduationCap size={14} className="text-teal-700 shrink-0" />
+                  <span>{teacher.degree}</span>
                 </span>
-              </div>
-            )}
+              )}
+              {teacher.experience && (
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80 text-xs font-semibold text-slate-700">
+                  <Clock size={13} className="text-teal-700 shrink-0" />
+                  <span>{teacher.experience} Exp</span>
+                </span>
+              )}
+            </div>
+          )}
+
+
+          {/* Subjects & Boards Box */}
+          {teacher.subjects && (
+            <div className="bg-slate-50/80 p-3.5 rounded-xl border border-slate-100 space-y-1">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-teal-800 block">
+                Subjects & Coverage
+              </span>
+              <p className="text-xs font-bold text-navy-950 leading-relaxed">
+                {teacher.subjects}
+              </p>
+              {teacher.boards && (
+                <p className="text-[11px] font-medium text-slate-600">
+                  Boards: <span className="text-slate-800 font-semibold">{teacher.boards}</span>
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* Achievements */}
+          {(teacher.achievements || teacher.studentAchievements) && (
+            <div className="space-y-1.5 text-xs">
+              {teacher.achievements && (
+                <div className="flex items-start gap-1.5 text-slate-700">
+                  <Award size={14} className="text-teal-700 shrink-0 mt-0.5" />
+                  <span className="font-semibold text-navy-900">{teacher.achievements}</span>
+                </div>
+              )}
+              {teacher.studentAchievements && (
+                <div className="flex items-start gap-1.5 text-slate-600">
+                  <Star size={14} className="text-amber-600 shrink-0 mt-0.5" />
+                  <span>
+                    Students: <strong className="text-slate-800">{teacher.studentAchievements}</strong>
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Note for senior faculty with minimal bio yet */}
+          {!teacher.subjects && !teacher.degree && (
+            <div className="bg-teal-50/60 p-3 rounded-xl border border-teal-100/70 text-xs text-teal-950 font-medium">
+              Senior specialized educator mentoring students for advanced board standards and competitive excellence.
+            </div>
+          )}
+        </div>
+
+        {/* Teaching Philosophy / Methodology Footer */}
+        {teacher.teachingPhilosophy && (
+          <div className="pt-3 border-t border-slate-100 mt-auto">
+            <div className="flex items-start gap-2 bg-teal-50/50 p-3 rounded-xl border border-teal-100/60">
+              <Quote size={13} className="text-teal-700 shrink-0 mt-0.5 opacity-75 fill-teal-700/20" />
+              <p className="text-xs text-slate-700 leading-relaxed italic line-clamp-3">
+                &ldquo;{teacher.teachingPhilosophy}&rdquo;
+              </p>
+            </div>
           </div>
         )}
       </div>
-
-      {/* Teaching Philosophy / Methodology Footer */}
-      {teacher.teachingPhilosophy && (
-        <div className="px-5 py-3.5 bg-teal-50/50 border-t border-teal-100/70 mt-auto">
-          <div className="flex items-start gap-2">
-            <Quote size={13} className="text-teal-700 shrink-0 mt-0.5 opacity-75 fill-teal-700/20" />
-            <p className="text-xs text-slate-700 leading-relaxed italic line-clamp-3">
-              &ldquo;{teacher.teachingPhilosophy}&rdquo;
-            </p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -154,6 +154,8 @@ export interface TeacherProfile {
   achievements?: string;
   studentAchievements?: string;
   tag: string;
+  image?: string;
+  imagePosition?: string;
 }
 
 // ─── Teaching Team Structure & Real Faculty ──────────────
@@ -176,6 +178,8 @@ export const FACULTY_LEVELS: readonly {
       {
         name: "Pritha",
         fullName: "Pritha Shil",
+        image: "/images/team/pritha.png",
+        imagePosition: "object-[center_15%]",
         degree: "B.Sc. Mathematics",
         experience: "1.5 Years",
         subjects: "Mathematics, Science",
@@ -186,6 +190,8 @@ export const FACULTY_LEVELS: readonly {
       {
         name: "Rudra",
         fullName: "Sampati Rudranarayan Rao",
+        image: "/images/team/rudra.png",
+        imagePosition: "object-[center_15%]",
         degree: "B.Sc. Mathematics Honours (Pursuing)",
         experience: "Nearly 2 Years",
         subjects: "Mathematics, Physics (up to Class 10)",
@@ -195,6 +201,8 @@ export const FACULTY_LEVELS: readonly {
       {
         name: "Arghyadeep",
         fullName: "Arghadeep Ghosh",
+        image: "/images/team/arghadeep.png",
+        imagePosition: "object-top",
         degree: "B.Sc. Mathematics (Pursuing)",
         experience: "2 Years",
         subjects: "Mathematics (All Boards), Mathematics (Olympiad)",
@@ -206,6 +214,8 @@ export const FACULTY_LEVELS: readonly {
       {
         name: "Ritoprova",
         fullName: "Ritoprova Roy",
+        image: "/images/team/ritoprova.png",
+        imagePosition: "object-[center_15%]",
         degree: "12th Pass",
         experience: "Since 2025",
         subjects: "Mathematics",
@@ -216,6 +226,8 @@ export const FACULTY_LEVELS: readonly {
       {
         name: "Sudeepta",
         fullName: "Sudiptha Bose",
+        image: "/images/team/sudipta.jpg",
+        imagePosition: "object-[center_20%]",
         degree: "Undergraduate (English Honours)",
         experience: "5 Years (Private Tutoring)",
         subjects: "English, Humanities",
@@ -226,6 +238,8 @@ export const FACULTY_LEVELS: readonly {
       {
         name: "Anusuya",
         fullName: "Anusuya Porel",
+        image: "/images/team/anusuya.png",
+        imagePosition: "object-[center_20%]",
         degree: "B.A. (Hons)",
         experience: "5 Years",
         subjects: "Arts group, English (up to Class 8)",
@@ -250,6 +264,8 @@ export const FACULTY_LEVELS: readonly {
       {
         name: "Deblina",
         fullName: "Deblina Poddar",
+        image: "/images/team/deblina.png",
+        imagePosition: "object-[center_20%]",
         degree: "M.Sc.",
         experience: "10 Years",
         subjects: "Statistics, Mathematics (WB Board), Statistics & Data Science (Competitive Exams)",
@@ -273,6 +289,8 @@ export const FACULTY_LEVELS: readonly {
       {
         name: "Arpan",
         fullName: "Arpan Roy",
+        image: "/images/team/arpan.jpg",
+        imagePosition: "object-[center_20%]",
         degree: "M.Sc.",
         experience: "6 Years",
         subjects: "Mathematics",
@@ -283,6 +301,8 @@ export const FACULTY_LEVELS: readonly {
       {
         name: "Moulisha",
         fullName: "Moulisha Sarkar",
+        image: "/images/team/moulisha.png",
+        imagePosition: "object-[center_15%]",
         degree: "M.Sc.",
         experience: "2015–2026 (11 Years)",
         subjects: "Physics, Chemistry, Biology",
@@ -315,15 +335,8 @@ export const FACULTY_LEVELS: readonly {
       {
         name: "Annesha",
         fullName: "Annesha",
-        degree: "",
-        experience: "",
-        subjects: "",
-        teachingPhilosophy: "",
-        tag: "Expert Faculty",
-      },
-      {
-        name: "Ritobrata",
-        fullName: "Ritobrata",
+        image: "/images/team/annesha.png",
+        imagePosition: "object-[center_20%]",
         degree: "",
         experience: "",
         subjects: "",
@@ -333,6 +346,8 @@ export const FACULTY_LEVELS: readonly {
       {
         name: "Rahul",
         fullName: "Rahul",
+        image: "/images/team/rahul.png",
+        imagePosition: "object-[center_35%]",
         degree: "",
         experience: "",
         subjects: "",
@@ -487,42 +502,173 @@ export const STATS = [
 ] as const;
 
 // ─── Testimonials ────────────────────────────────────────
-export const TESTIMONIALS = [
+export interface TestimonialItem {
+  id: number;
+  studentName: string;
+  parentName?: string;
+  role: string;
+  school: string;
+  exam?: string;
+  passingYear?: string;
+  score?: string;
+  tutorMentioned?: string;
+  quote: string;
+  secondaryQuote?: string;
+  standard?: string;
+  board?: string;
+  location?: string;
+}
+
+export const TESTIMONIALS: readonly TestimonialItem[] = [
   {
     id: 1,
-    quote: "Finding a tuition center in North 24 Parganas that restricts batch size strictly to 5 students was a game changer for my son in Class 9 ICSE. His physics and maths marks jumped from 68% to 92%.",
-    parentName: "Smt. Manidipa Banerjee",
-    studentName: "Debjit Banerjee",
-    standard: "Std 9",
-    board: "ICSE",
-    location: "Khardaha",
+    studentName: "Triparna Das",
+    role: "Student",
+    school: "RRKM Rahara / Sudhir Memorial",
+    exam: "Madhyamik 2025 (Class 11)",
+    passingYear: "2026",
+    score: "90%",
+    board: "WB Board",
+    standard: "Class 11",
+    tutorMentioned: "Faculty Team",
+    quote: "Hardworking, appreciates the different types of approaches made by students instead of just sticking to textbook methods. Very systematic and doesn't rush to complete topics and instead focuses on clarity. In my case, your classes helped me a lot due to the variety of questions you made me practice... also my doubts and weak topics were nicely clarified by you.",
   },
   {
     id: 2,
-    quote: "The near-peer mentors for Class 6 made my daughter look forward to mathematics! Earlier she was intimidated by fractions and word problems. Now she solves them before her school tests.",
-    parentName: "Sri Anupam Ghosh",
-    studentName: "Ananya Ghosh",
-    standard: "Std 6",
+    studentName: "Shreshtha Sen",
+    role: "Student",
+    school: "Bhavan's Gangabux Kanoria Vidyamandir (BGKV)",
+    exam: "Secondary / Board Exam",
+    passingYear: "2026",
+    score: "85.64%",
     board: "CBSE",
-    location: "Sodepur",
+    standard: "Secondary",
+    tutorMentioned: "Annesha Ghosh Ma'am (Maths)",
+    quote: "My maths tutor was Annesha Ghosh ma'am. Though I joined her class mid of the session, she understood all my problems and did the needful. She has not only implanted a quest for gaining the real knowledge in me but also provided me with a lot of emotional support during my tough times. Rather than a teacher, she has always been my elder sister and guided me like the same. I highly recommend her to all of my juniors who are actually interested in gaining the actual knowledge and enjoying the fun of mathematics.",
   },
   {
     id: 3,
-    quote: "Knowing that Let's Study MS also trains students for IIT JAM and ISI gives us immense confidence. The academic rigor here in Class 11 & 12 is far superior to standard commercial coaching mills.",
-    parentName: "Dr. K. S. Mukherjee",
-    studentName: "Souradeep Mukherjee",
-    standard: "Std 11",
-    board: "WB Board (English Medium)",
+    studentName: "Dibyaduti Chakraborty",
+    role: "Student",
+    school: "Army Public School Barrackpore (APS BKP)",
+    exam: "10th Board Exam",
+    passingYear: "2026",
+    score: "97.2%",
+    board: "CBSE",
+    standard: "Class 10",
     location: "Barrackpore",
+    tutorMentioned: "Mentorship Team",
+    quote: "My tutor took many practice tests for me. My performance was improved largely because of this. My tutor solves my doubts to help me improve.",
   },
   {
     id: 4,
-    quote: "Level 3 mentors with B.Ed qualification make a huge difference in board exam strategy. The feedback on how to write steps in Class 10 CBSE maths and science was extraordinarily helpful.",
-    parentName: "Smt. Priyanka Roy",
-    studentName: "Rohit Roy",
-    standard: "Std 10",
+    studentName: "Sreejoni Charan",
+    role: "Student",
+    school: "Ram Mohan Mission High School",
+    exam: "ICSE Class 10",
+    passingYear: "2026",
+    score: "90.2%",
+    board: "ICSE",
+    standard: "Class 10",
+    tutorMentioned: "Moulisha Ma'am (Chemistry)",
+    quote: "Moulisha ma'am has helped me throughout the journey. She has been an amazing teacher who was there with me with anything and everything I needed. Honestly chemistry became my favourite subject because of her and I chose to take up science in class 11 because of her constant support.",
+  },
+  {
+    id: 5,
+    studentName: "Megh Ganguly",
+    role: "Student",
+    school: "Calcutta Public School, Bidhan Park",
+    exam: "Annual Examination",
+    passingYear: "2025-26",
+    score: "88%",
+    board: "ICSE / CBSE",
+    standard: "High School",
+    location: "Bidhan Park",
+    tutorMentioned: "Faculty Team",
+    quote: "One of the best tutors, she explains hard topics simply and has made my learning journey a breeze!",
+  },
+  {
+    id: 6,
+    studentName: "Pratyusha Karmakar",
+    role: "Student",
+    school: "Holy Child Girls' High School",
+    exam: "Annual Examination (Class 5)",
+    passingYear: "2025",
+    score: "80%",
+    board: "WB / Convent",
+    standard: "Class 5",
+    tutorMentioned: "Sudiptha Di",
+    quote: "Sudiptha Di is a very friendly and helpful tutor. She explains every topic clearly and makes learning enjoyable. She has helped me improve my grades a lot and always encourages me to do better. She is very patient, caring, and supportive. I am grateful to have such a wonderful tutor who makes studying easier and more interesting.",
+  },
+  {
+    id: 7,
+    studentName: "Shiv Jyoti Mitra",
+    role: "Student",
+    school: "Swami Vivekananda Academy (CBSE) / Prev: St. Paul's (ICSE)",
+    exam: "Class 10th ICSE Boards",
+    passingYear: "2025-26",
+    score: "94.2% (97 in Maths)",
+    board: "ICSE / CBSE",
+    standard: "Class 10",
+    location: "Bardhaman",
+    tutorMentioned: "Annesha Mam",
+    quote: "Annesha Mam is a very helpful teacher. She helped me in my Boards examinations a lot and even in School exams. She also arranges Doubt solving classes whenever I have problems and thus, helps me in my studies a lot... Annesha Mam explains every class extremely beautifully and clearly and she also gives us several questions to solve so that we can manifest the amount of our understandings. Tbh, Annesha Mam's credit in my studies can't be described in a few words.",
+  },
+  {
+    id: 8,
+    studentName: "Saanvi Das",
+    parentName: "Guardian of Saanvi",
+    role: "Student & Guardian Review",
+    school: "Loreto Convent Entally",
+    exam: "Currently in Class 9 (Class 8 Maths)",
+    score: "Maths Improvement",
+    board: "ICSE",
+    standard: "Class 9",
+    location: "Kolkata",
+    tutorMentioned: "Faculty Mentor",
+    quote: "She is such a kind and friendly person. She treats me like her own little sister and always gives me the best advice. She genuinely cares about my studies and future, patiently discussing everything from stream choices to future colleges. And if I don’t complete homework, she definitely gives me a good scolding!",
+    secondaryQuote: "Guardian's Review: 'My daughter’s tutor is very kind, caring, and dedicated. She teaches Maths very well, patiently explains several times, and helps complete lessons. Because of her guidance, Saanvi has improved a lot in Maths and no longer feels afraid of it. We are truly grateful.'",
+  },
+  {
+    id: 9,
+    studentName: "Pranjal Gupta",
+    role: "Student",
+    school: "Radcliffe School",
+    exam: "CBSE Board Exam Class 10",
+    passingYear: "2025",
+    score: "95.8% Overall (Maths: 93%)",
     board: "CBSE",
-    location: "Belgharia",
+    standard: "Class 10",
+    tutorMentioned: "Faculty Mentor (Maths)",
+    quote: "She is an amazing Maths teacher who explains concepts really well and helped me improve my confidence and problem-solving skills. I’m really grateful for all her help and would definitely recommend her!",
+  },
+  {
+    id: 10,
+    studentName: "Sriyan Shaha",
+    parentName: "Parent of Sriyan",
+    role: "Parent Review",
+    school: "St. Xavier's Collegiate School",
+    exam: "IMO / AMC 8 & 10 Olympiads",
+    score: "Olympiad Track",
+    board: "ICSE / Olympiad",
+    standard: "Olympiad Prep",
+    location: "Kolkata",
+    tutorMentioned: "Arghadeep (Mentor)",
+    quote: "Arghadeep is very sincere and his knowledge on mathematical application is very keen. I've seen positive change in my son's performance in maths.",
+  },
+  {
+    id: 11,
+    studentName: "P. L. Srinidhi",
+    role: "International Student",
+    school: "Indian Language School, Lagos, Nigeria",
+    exam: "10th Board Examination",
+    passingYear: "2023-24",
+    score: "71%",
+    board: "CBSE International",
+    standard: "Class 10",
+    location: "Lagos, Nigeria",
+    tutorMentioned: "Faculty Mentor",
+    quote: "Ma’am’s classes have been very helpful in strengthening my understanding of the subject and improving my confidence. I’m truly grateful for her efforts and the encouragement she has given me throughout my preparation.",
   },
 ] as const;
 

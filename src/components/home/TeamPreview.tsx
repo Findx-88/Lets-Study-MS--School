@@ -102,8 +102,19 @@ export function TeamPreview() {
                         {lvl.teachers.map((t) => (
                           <span
                             key={t.name}
-                            className="text-xs font-bold text-navy-900 bg-white px-2 py-0.5 rounded border border-slate-200 shadow-2xs"
+                            className="inline-flex items-center gap-1.5 text-xs font-bold text-navy-900 bg-white px-2 py-0.5 rounded-lg border border-slate-200 shadow-2xs"
                           >
+                            {t.image && (
+                              <span className="relative w-4 h-4 rounded-full overflow-hidden shrink-0 ring-1 ring-teal-700/20">
+                                <Image
+                                  src={t.image}
+                                  alt={t.name}
+                                  fill
+                                  className={`object-cover ${t.imagePosition || "object-top"}`}
+                                  sizes="16px"
+                                />
+                              </span>
+                            )}
                             {t.name}
                           </span>
                         ))}

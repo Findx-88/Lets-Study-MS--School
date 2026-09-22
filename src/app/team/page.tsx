@@ -16,8 +16,16 @@ function TeacherCard({ teacher }: { teacher: TeacherProfile }) {
     ? `${nameParts[0][0]}${nameParts[nameParts.length - 1][0]}`
     : nameParts[0][0];
 
+  const primaryId = teacher.name.toLowerCase();
+
   return (
-    <div className="rounded-3xl border border-slate-200/90 bg-white shadow-[0_4px_20px_-4px_rgba(15,23,42,0.08)] hover:shadow-[0_16px_36px_-6px_rgba(13,148,136,0.18)] hover:border-teal-500/50 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+    <div
+      id={primaryId}
+      className="scroll-mt-28 rounded-3xl border border-slate-200/90 bg-white shadow-[0_4px_20px_-4px_rgba(15,23,42,0.08)] hover:shadow-[0_16px_36px_-6px_rgba(13,148,136,0.18)] hover:border-teal-500/50 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group target:ring-4 target:ring-teal-500/40 target:border-teal-500 relative"
+    >
+      {/* Alternate ID anchors for spelling variants */}
+      {primaryId === "sudeepta" && <span id="sudipta" className="absolute -top-28 pointer-events-none" />}
+      {primaryId === "arghyadeep" && <span id="arghadeep" className="absolute -top-28 pointer-events-none" />}
       {/* Circular Avatar Header Area */}
       <div className="pt-6 pb-2 px-6 flex flex-col items-center text-center bg-gradient-to-b from-slate-50/70 via-white to-white">
         <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-md bg-slate-100 ring-2 ring-teal-500/30 shrink-0 group-hover:ring-teal-500/70 group-hover:scale-105 transition-all duration-300">

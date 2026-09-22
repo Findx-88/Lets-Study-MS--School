@@ -543,6 +543,7 @@ export interface TestimonialItem {
   passingYear?: string;
   score?: string;
   tutorMentioned?: string;
+  tutorLink?: string;
   quote: string;
   secondaryQuote?: string;
   standard?: string;
@@ -562,6 +563,7 @@ export const TESTIMONIALS: readonly TestimonialItem[] = [
     board: "WB Board",
     standard: "Class 11",
     tutorMentioned: "Faculty Team",
+    tutorLink: "/team",
     quote: "Hardworking, appreciates the different types of approaches made by students instead of just sticking to textbook methods. Very systematic and doesn't rush to complete topics and instead focuses on clarity. In my case, your classes helped me a lot due to the variety of questions you made me practice... also my doubts and weak topics were nicely clarified by you.",
   },
   {
@@ -575,6 +577,7 @@ export const TESTIMONIALS: readonly TestimonialItem[] = [
     board: "CBSE",
     standard: "Secondary",
     tutorMentioned: "Annesha Ghosh Ma'am (Maths)",
+    tutorLink: "/team#annesha",
     quote: "My maths tutor was Annesha Ghosh ma'am. Though I joined her class mid of the session, she understood all my problems and did the needful. She has not only implanted a quest for gaining the real knowledge in me but also provided me with a lot of emotional support during my tough times. Rather than a teacher, she has always been my elder sister and guided me like the same. I highly recommend her to all of my juniors who are actually interested in gaining the actual knowledge and enjoying the fun of mathematics.",
   },
   {
@@ -589,6 +592,7 @@ export const TESTIMONIALS: readonly TestimonialItem[] = [
     standard: "Class 10",
     location: "Barrackpore",
     tutorMentioned: "Mentorship Team",
+    tutorLink: "/team",
     quote: "My tutor took many practice tests for me. My performance was improved largely because of this. My tutor solves my doubts to help me improve.",
   },
   {
@@ -602,6 +606,7 @@ export const TESTIMONIALS: readonly TestimonialItem[] = [
     board: "ICSE",
     standard: "Class 10",
     tutorMentioned: "Moulisha Ma'am (Chemistry)",
+    tutorLink: "/team#moulisha",
     quote: "Moulisha ma'am has helped me throughout the journey. She has been an amazing teacher who was there with me with anything and everything I needed. Honestly chemistry became my favourite subject because of her and I chose to take up science in class 11 because of her constant support.",
   },
   {
@@ -616,6 +621,7 @@ export const TESTIMONIALS: readonly TestimonialItem[] = [
     standard: "High School",
     location: "Bidhan Park",
     tutorMentioned: "Faculty Team",
+    tutorLink: "/team",
     quote: "One of the best tutors, she explains hard topics simply and has made my learning journey a breeze!",
   },
   {
@@ -629,6 +635,7 @@ export const TESTIMONIALS: readonly TestimonialItem[] = [
     board: "WB / Convent",
     standard: "Class 5",
     tutorMentioned: "Sudiptha Di",
+    tutorLink: "/team#sudipta",
     quote: "Sudiptha Di is a very friendly and helpful tutor. She explains every topic clearly and makes learning enjoyable. She has helped me improve my grades a lot and always encourages me to do better. She is very patient, caring, and supportive. I am grateful to have such a wonderful tutor who makes studying easier and more interesting.",
   },
   {
@@ -643,6 +650,7 @@ export const TESTIMONIALS: readonly TestimonialItem[] = [
     standard: "Class 10",
     location: "Bardhaman",
     tutorMentioned: "Annesha Mam",
+    tutorLink: "/team#annesha",
     quote: "Annesha Mam is a very helpful teacher. She helped me in my Boards examinations a lot and even in School exams. She also arranges Doubt solving classes whenever I have problems and thus, helps me in my studies a lot... Annesha Mam explains every class extremely beautifully and clearly and she also gives us several questions to solve so that we can manifest the amount of our understandings. Tbh, Annesha Mam's credit in my studies can't be described in a few words.",
   },
   {
@@ -657,6 +665,7 @@ export const TESTIMONIALS: readonly TestimonialItem[] = [
     standard: "Class 9",
     location: "Kolkata",
     tutorMentioned: "Faculty Mentor",
+    tutorLink: "/team",
     quote: "She is such a kind and friendly person. She treats me like her own little sister and always gives me the best advice. She genuinely cares about my studies and future, patiently discussing everything from stream choices to future colleges. And if I don’t complete homework, she definitely gives me a good scolding!",
     secondaryQuote: "Guardian's Review: 'My daughter’s tutor is very kind, caring, and dedicated. She teaches Maths very well, patiently explains several times, and helps complete lessons. Because of her guidance, Saanvi has improved a lot in Maths and no longer feels afraid of it. We are truly grateful.'",
   },
@@ -671,6 +680,7 @@ export const TESTIMONIALS: readonly TestimonialItem[] = [
     board: "CBSE",
     standard: "Class 10",
     tutorMentioned: "Faculty Mentor (Maths)",
+    tutorLink: "/team",
     quote: "She is an amazing Maths teacher who explains concepts really well and helped me improve my confidence and problem-solving skills. I’m really grateful for all her help and would definitely recommend her!",
   },
   {
@@ -685,6 +695,7 @@ export const TESTIMONIALS: readonly TestimonialItem[] = [
     standard: "Olympiad Prep",
     location: "Kolkata",
     tutorMentioned: "Arghadeep (Mentor)",
+    tutorLink: "/team#arghadeep",
     quote: "Arghadeep is very sincere and his knowledge on mathematical application is very keen. I've seen positive change in my son's performance in maths.",
   },
   {
@@ -699,7 +710,23 @@ export const TESTIMONIALS: readonly TestimonialItem[] = [
     standard: "Class 10",
     location: "Lagos, Nigeria",
     tutorMentioned: "Faculty Mentor",
+    tutorLink: "/team",
     quote: "Ma’am’s classes have been very helpful in strengthening my understanding of the subject and improving my confidence. I’m truly grateful for her efforts and the encouragement she has given me throughout my preparation.",
+  },
+  {
+    id: 12,
+    studentName: "Khidash Ahmed",
+    role: "International Student",
+    school: "Indian Language School, Lagos, Nigeria",
+    exam: "Board Exam",
+    passingYear: "2025",
+    score: "83%",
+    board: "CBSE International",
+    standard: "Class 10",
+    location: "Lagos, Nigeria",
+    tutorMentioned: "Faculty Mentor",
+    tutorLink: "/team",
+    quote: "Good explanation and helpful.",
   },
 ] as const;
 

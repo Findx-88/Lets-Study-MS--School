@@ -1,25 +1,28 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion } from "framer-motion";
+import Link from "next/link";
 import {
-  Star,
   Quote,
   ChevronLeft,
   ChevronRight,
   School,
   Award,
-  Sparkles,
   MapPin,
   GraduationCap,
 } from "lucide-react";
-import { TESTIMONIALS, type TestimonialItem } from "@/lib/constants";
+import { TESTIMONIALS } from "@/lib/constants";
 
 export function TestimonialsSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const N = TESTIMONIALS.length; // 12 items
+  const [currentIndex, setCurrentIndex] = useState(N); // Start in middle set
+  const [isTransitioning, setIsTransitioning] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
   const [itemsPerPage, setItemsPerPage] = useState(3);
   const touchStartX = useRef<number | null>(null);
+
+  // 3 copies to create a seamless infinite circular loop
+  const extendedTestimonials = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
 
   // Responsive calculation for items visible per slide
   useEffect(() => {
@@ -37,15 +40,38 @@ export function TestimonialsSection() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const maxIndex = Math.max(0, TESTIMONIALS.length - itemsPerPage);
-
   const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-  }, [maxIndex]);
+    if (!isTransitioning) return;
+    setCurrentIndex((prev) => prev + 1);
+  }, [isTransitioning]);
 
   const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-  }, [maxIndex]);
+    if (!isTransitioning) return;
+    setCurrentIndex((prev) => prev - 1);
+  }, [isTransitioning]);
+
+  // Handle transition end for seamless circular wrap-around
+  const handleTransitionEnd = () => {
+    if (currentIndex >= 2 * N) {
+      setIsTransitioning(false);
+      setCurrentIndex(currentIndex - N);
+    } else if (currentIndex < N) {
+      setIsTransitioning(false);
+      setCurrentIndex(currentIndex + N);
+    }
+  };
+
+  // Re-enable transition on the next animation frame after silent index reset
+  useEffect(() => {
+    if (!isTransitioning) {
+      const raf = requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsTransitioning(true);
+        });
+      });
+      return () => cancelAnimationFrame(raf);
+    }
+  }, [isTransitioning]);
 
   // Auto-rotation effect (every 4.5 seconds, pauses when user hovers or interacts)
   useEffect(() => {
@@ -72,6 +98,8 @@ export function TestimonialsSection() {
     touchStartX.current = null;
   };
 
+  const activeDotIndex = ((currentIndex - N) % N + N) % N;
+
   return (
     <section
       id="results"
@@ -79,19 +107,10 @@ export function TestimonialsSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-              <Sparkles size={13} className="text-teal-600" />
-              Verified Student & Parent Feedback
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black font-heading text-navy-950 mt-3">
-              Real Academic Results, Real Voices
-            </h2>
-            <p className="text-sm text-slate-600 mt-2">
-              Unfiltered reflections from board exam scorers, olympiad aspirants, and grateful families across Kolkata and beyond.
-            </p>
-          </div>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+          <h2 className="text-3xl sm:text-4xl font-black font-heading text-navy-950">
+            Real Academic Results, Real Voices
+          </h2>
 
           {/* Carousel Manual Controls */}
           <div className="flex items-center gap-3 shrink-0 self-start md:self-auto">
@@ -121,36 +140,39 @@ export function TestimonialsSection() {
           onTouchEnd={handleTouchEnd}
         >
           <div
-            className="flex transition-transform duration-700 ease-out"
+            className={`flex ${
+              isTransitioning ? "transition-transform duration-700 ease-out" : ""
+            }`}
             style={{
               transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
             }}
+            onTransitionEnd={handleTransitionEnd}
           >
-            {TESTIMONIALS.map((item) => (
+            {extendedTestimonials.map((item, idx) => (
               <div
-                key={item.id}
+                key={`${item.id}-${idx}`}
                 className="px-3 shrink-0"
                 style={{ width: `${100 / itemsPerPage}%` }}
               >
                 <div className="h-full bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-[0_16px_36px_-6px_rgba(13,148,136,0.16)] hover:border-teal-400 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
-                  {/* Top Bar: Stars + Score Badge */}
+                  {/* Top Bar: Board & Score Badge (No Stars) */}
                   <div>
-                    <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100">
-                      <div className="flex text-amber-400">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} size={15} className="fill-amber-400" />
-                        ))}
-                      </div>
+                    <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100 min-h-[32px]">
+                      {item.board ? (
+                        <span className="text-[10px] font-bold text-teal-800 bg-teal-100/70 px-2.5 py-0.5 rounded-md">
+                          {item.board} {item.standard ? `• ${item.standard}` : ""}
+                        </span>
+                      ) : <span />}
 
                       {item.score && (
-                        <span className="inline-flex items-center gap-1 text-xs font-black text-teal-800 bg-teal-50 border border-teal-200 px-2.5 py-0.5 rounded-full shadow-xs">
+                        <span className="inline-flex items-center gap-1 text-xs font-black text-teal-800 bg-teal-50 border border-teal-200 px-2.5 py-0.5 rounded-full shadow-xs ml-auto">
                           <Award size={13} className="text-teal-700 shrink-0" />
                           <span>{item.score}</span>
                         </span>
                       )}
                     </div>
 
-                    {/* School & Board Details */}
+                    {/* School & Exam Details */}
                     <div className="space-y-1 mb-4">
                       <div className="flex items-start gap-1.5 text-xs text-slate-700 font-medium">
                         <School size={14} className="text-teal-700 shrink-0 mt-0.5" />
@@ -186,7 +208,7 @@ export function TestimonialsSection() {
                     )}
                   </div>
 
-                  {/* Bottom Footer: Student / Parent & Tutor Tag */}
+                  {/* Bottom Footer: Student / Parent & Interactive Tutor Tag */}
                   <div className="pt-4 border-t border-slate-100 mt-2">
                     <div className="flex items-center justify-between gap-2">
                       <div>
@@ -206,10 +228,18 @@ export function TestimonialsSection() {
                       )}
                     </div>
 
+                    {/* Interactive Teacher Link */}
                     {item.tutorMentioned && (
-                      <div className="mt-2.5 inline-flex items-center gap-1.5 text-[11px] font-semibold text-teal-800 bg-teal-50/70 border border-teal-200/60 px-2.5 py-1 rounded-lg">
-                        <GraduationCap size={13} className="text-teal-700 shrink-0" />
-                        <span>Tutor: {item.tutorMentioned}</span>
+                      <div className="mt-2.5">
+                        <Link
+                          href={item.tutorLink || "/team"}
+                          className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-teal-800 bg-teal-50/80 hover:bg-teal-100 hover:text-teal-950 border border-teal-200/70 hover:border-teal-400 px-2.5 py-1 rounded-lg transition-all group/tutor cursor-pointer"
+                          title="View Mentor Profile"
+                        >
+                          <GraduationCap size={13} className="text-teal-700 group-hover/tutor:scale-110 transition-transform shrink-0" />
+                          <span>Tutor: {item.tutorMentioned}</span>
+                          <span className="text-[10px] text-teal-600 font-bold group-hover/tutor:translate-x-0.5 transition-transform">→</span>
+                        </Link>
                       </div>
                     )}
                   </div>
@@ -221,13 +251,16 @@ export function TestimonialsSection() {
 
         {/* Carousel Indicators / Dots */}
         <div className="flex items-center justify-center gap-2 mt-8">
-          {[...Array(maxIndex + 1)].map((_, idx) => (
+          {[...Array(N)].map((_, idx) => (
             <button
               key={idx}
-              onClick={() => setCurrentIndex(idx)}
+              onClick={() => {
+                setIsTransitioning(true);
+                setCurrentIndex(N + idx);
+              }}
               aria-label={`Go to slide ${idx + 1}`}
               className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                currentIndex === idx
+                activeDotIndex === idx
                   ? "w-8 bg-teal-700"
                   : "w-2 bg-slate-300 hover:bg-slate-400"
               }`}

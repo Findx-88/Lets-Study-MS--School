@@ -191,7 +191,7 @@ export function Footer() {
                   className="hover:text-teal-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1.5 group"
                 >
                   <span className="text-teal-400 group-hover:translate-x-0.5 transition-transform">›</span>
-                  <span>Classroom Gallery</span>
+                  <span>Live Class Gallery</span>
                 </Link>
               </li>
             </ul>
@@ -233,16 +233,17 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Column 4: Center & Contact (3 cols) */}
+          {/* Column 4: Office & Helpline (3 cols) */}
           <div className="lg:col-span-3">
             <h5 className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-4 font-heading">
-              Center & Contact
+              Academic Office & Helpline
             </h5>
             <div className="space-y-3 text-xs text-navy-300">
               {/* Address */}
               <div className="flex items-start gap-2.5">
                 <MapPin size={15} className="text-teal-400 shrink-0 mt-0.5" />
                 <p className="leading-relaxed">
+                  <span className="text-[11px] text-teal-300/80 block font-medium">Registered Office:</span>
                   {CONTACT.address.street},<br />
                   {CONTACT.address.city}, {CONTACT.address.state} — {CONTACT.address.pincode}
                 </p>

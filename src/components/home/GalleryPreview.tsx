@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, BookOpen } from "lucide-react";
+import { ArrowRight, Video, Sparkles } from "lucide-react";
 
 export function GalleryPreview() {
   return (
@@ -11,28 +11,29 @@ export function GalleryPreview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-amber-700 bg-amber-100 px-3 py-1 rounded-full border border-amber-200">
-              Inside Our Learning Pods
+            <span className="text-xs font-bold uppercase tracking-widest text-teal-800 bg-teal-100/80 px-3 py-1 rounded-full border border-teal-200 inline-flex items-center gap-1.5">
+              <Video size={13} className="text-teal-700" />
+              <span>100% Live Interactive Classes</span>
             </span>
             <h2 className="text-3xl sm:text-4xl font-black font-heading text-navy-950 mt-3">
-              Classroom & Learning Environment
+              Inside Our Live Online Classrooms
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mt-2">
-              Clean, well-lit study rooms with dedicated whiteboards, micro-tables, and supportive mentoring.
+              Interactive Google Meet sessions with real-time digital whiteboards, stylus derivations, and tight 3–5 student micro-pods.
             </p>
           </div>
           <Link
             href="/gallery"
             className="btn-pill btn-outline text-xs !px-5 !py-2.5 shrink-0 self-start md:self-auto flex items-center gap-1.5"
           >
-            <span>View Full Gallery</span>
+            <span>View Live Class Gallery</span>
             <ArrowRight size={14} />
           </Link>
         </div>
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
-          {/* Large image 1 */}
+          {/* Large image 1: Google Meet Class */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -41,22 +42,22 @@ export function GalleryPreview() {
             className="md:col-span-7 relative rounded-3xl overflow-hidden shadow-lg border-4 border-white min-h-[320px] sm:min-h-[400px] group"
           >
             <Image
-              src="/images/gallery/classroom.jpg"
-              alt="Small batch classroom session in progress"
+              src="/images/gallery/online_meet_class.jpg"
+              alt="Live Google Meet online class session in micro-batch"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 768px) 100vw, 60vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
             <div className="absolute bottom-6 left-6 right-6 text-white">
               <span className="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/20 px-2.5 py-0.5 rounded-full inline-block mb-1">
-                Collaborative Pods
+                Google Meet Micro-Pods
               </span>
               <h3 className="text-lg sm:text-xl font-bold font-heading">
-                Max 5 Students per Table — Active Peer Discussions
+                Max 3–5 Students per Session — Active Real-Time Dialogue
               </h3>
               <p className="text-xs text-slate-200 mt-1">
-                Dedicated Chemistry, Physics and Mathematics concept formulation around round tables.
+                Dedicated Mathematics, Physics, Chemistry, Biology & English concept formulation on interactive digital whiteboards.
               </p>
             </div>
           </motion.div>
@@ -71,17 +72,17 @@ export function GalleryPreview() {
               className="relative rounded-3xl overflow-hidden shadow-lg border-4 border-white min-h-[190px] group"
             >
               <Image
-                src="/images/hero/students.jpg"
-                alt="Students analyzing mathematics formulas together"
+                src="/images/gallery/student_online_class.jpg"
+                alt="Student attentively learning from home during live class"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 768px) 100vw, 40vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <span className="text-[10px] font-bold text-teal-300">Doubt Solving</span>
+                <span className="text-[10px] font-bold text-teal-300">Comfort & Focus</span>
                 <p className="text-sm font-bold font-heading">
-                  1-on-1 Step-by-Step Doubt Clearing
+                  Zero Commute Fatigue • Learn from Home
                 </p>
               </div>
             </motion.div>
@@ -94,17 +95,17 @@ export function GalleryPreview() {
               className="relative rounded-3xl overflow-hidden shadow-lg border-4 border-white min-h-[190px] group"
             >
               <Image
-                src="/images/team/teacher.jpg"
-                alt="Teacher explaining physics circuits on whiteboard"
+                src="/images/gallery/digital_tablet_mentor.jpg"
+                alt="Teacher deriving step-by-step formulas on digital tablet"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 768px) 100vw, 40vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <span className="text-[10px] font-bold text-amber-300">Board Rigor</span>
+                <span className="text-[10px] font-bold text-amber-300">Digital Precision</span>
                 <p className="text-sm font-bold font-heading">
-                  Whiteboard Derivations & Numerical Practice
+                  Real-Time Stylus Derivations & Step Practice
                 </p>
               </div>
             </motion.div>

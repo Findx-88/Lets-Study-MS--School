@@ -49,8 +49,8 @@ export default function AboutPage() {
             <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
               <div className="relative h-[360px] w-full">
                 <Image
-                  src="/images/gallery/classroom.jpg"
-                  alt="Students in collaborative study pod"
+                  src="/images/gallery/online_meet_class.jpg"
+                  alt="Students in live interactive online study pod on Google Meet"
                   fill
                   className="object-cover"
                 />
@@ -78,7 +78,7 @@ export default function AboutPage() {
               Micro-Pods (3–5 Students)
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              We never crowd classrooms. Class 5–6 students learn in intimate pods of 3–4, while Class 7+ are strictly capped at 5 students. Every child speaks, asks, and solves.
+              We never crowd batches. Class 5–6 students learn in intimate live online pods of 3–4, while Class 7+ are strictly capped at 5 students. Every child speaks, asks, and solves in live Google Meet classes.
             </p>
           </div>
 

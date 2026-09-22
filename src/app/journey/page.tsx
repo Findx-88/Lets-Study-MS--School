@@ -253,12 +253,12 @@ export default function JourneyPage() {
               </div>
             </div>
 
-            {/* Right Column: Classroom photo with matched proportions */}
+            {/* Right Column: Live online class photo with matched proportions */}
             <div className="lg:col-span-5 w-full flex items-center justify-center">
               <div className="relative rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-navy-900/60 aspect-[4/3] w-full max-w-md lg:max-w-none">
                 <Image
-                  src="/images/gallery/classroom.jpg"
-                  alt="Students engaged in focused small group learning"
+                  src="/images/gallery/online_meet_class.jpg"
+                  alt="Students engaged in focused online small group learning on Google Meet"
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"
                 />

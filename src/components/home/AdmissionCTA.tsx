@@ -88,9 +88,12 @@ export function AdmissionCTA() {
               <div className="flex items-start gap-3 text-xs sm:text-sm text-navy-100">
                 <MapPin size={18} className="text-rose-400 shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-white">Physical Classroom Center:</p>
+                  <p className="font-semibold text-white">Registered Academic Office:</p>
                   <p className="text-navy-300 text-xs">
                     {CONTACT.address.street}, {CONTACT.address.city} — {CONTACT.address.pincode}
+                  </p>
+                  <p className="text-[11px] text-teal-300 mt-1 font-medium">
+                    (All batches conducted live online via Google Meet)
                   </p>
                 </div>
               </div>

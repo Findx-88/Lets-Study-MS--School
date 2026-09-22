@@ -18,9 +18,19 @@ export function TestimonialsSection() {
   const [isPaused, setIsPaused] = useState(false);
   const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({});
   const isInteracting = useRef(false);
+  const pauseTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Render 2 duplicate sets to create an infinite continuous loop
   const doubleList = [...TESTIMONIALS, ...TESTIMONIALS];
+
+  // Pause auto-drift when user interacts manually
+  const pauseAutoScrollTemporarily = () => {
+    isInteracting.current = true;
+    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    pauseTimerRef.current = setTimeout(() => {
+      isInteracting.current = false;
+    }, 2800);
+  };
 
   // Continuous slow rotation loop
   useEffect(() => {
@@ -43,23 +53,35 @@ export function TestimonialsSection() {
     };
 
     animId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(animId);
+    return () => {
+      cancelAnimationFrame(animId);
+      if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    };
   }, [isPaused]);
 
-  // Manual scroll controls
+  // Manual scroll controls with smooth bi-directional circular rotation
   const handleScrollLeft = () => {
-    if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: -360, behavior: "smooth" });
+    const container = scrollRef.current;
+    if (!container) return;
+    pauseAutoScrollTemporarily();
+    const halfWidth = container.scrollWidth / 2;
+    // Seamlessly jump ahead by halfWidth first so smooth scrolling left never hits a wall
+    if (container.scrollLeft < 380) {
+      container.scrollLeft += halfWidth;
+    }
+    container.scrollBy({ left: -380, behavior: "smooth" });
   };
 
   const handleScrollRight = () => {
-    if (!scrollRef.current) return;
     const container = scrollRef.current;
+    if (!container) return;
+    pauseAutoScrollTemporarily();
     const halfWidth = container.scrollWidth / 2;
+    // Seamlessly jump back by halfWidth before pushing right if past threshold
     if (container.scrollLeft >= halfWidth) {
       container.scrollLeft -= halfWidth;
     }
-    scrollRef.current.scrollBy({ left: 360, behavior: "smooth" });
+    container.scrollBy({ left: 380, behavior: "smooth" });
   };
 
   const toggleExpand = (cardKey: string, e: React.MouseEvent) => {
@@ -82,8 +104,9 @@ export function TestimonialsSection() {
           </div>
 
           {/* Carousel Manual Controls */}
-          <div className="flex items-center gap-3 shrink-0 self-start md:self-auto">
+          <div className="flex items-center gap-3 shrink-0 self-start md:self-auto relative z-10">
             <button
+              type="button"
               onClick={handleScrollLeft}
               aria-label="Scroll left"
               className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:bg-teal-50 hover:border-teal-400 text-slate-700 hover:text-teal-900 transition-all shadow-sm flex items-center justify-center cursor-pointer active:scale-95"
@@ -91,6 +114,7 @@ export function TestimonialsSection() {
               <ChevronLeft size={18} />
             </button>
             <button
+              type="button"
               onClick={handleScrollRight}
               aria-label="Scroll right"
               className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:bg-teal-50 hover:border-teal-400 text-slate-700 hover:text-teal-900 transition-all shadow-sm flex items-center justify-center cursor-pointer active:scale-95"

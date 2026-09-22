@@ -82,10 +82,10 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "Where is Let's Study MS located?",
+      name: "Where is Let's Study MS located and how are classes held?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our center is located at 118/105, Rabindrapally, Khardaha, Kolkata, North 24 Parganas, West Bengal 700117, India. We serve students from Khardaha, Barrackpore, Sodepur, Belgharia, Madhyamgram, Barasat, Rahara, Dum Dum, and greater Kolkata. We also offer online classes for international students.",
+        text: "Our registered academic office is at 118/105, Rabindrapally, Khardaha, Kolkata, West Bengal 700117. All classes are conducted 100% live and interactively online via Google Meet in strict micro-batches (3–5 students). This ensures that students from Khardaha, Barrackpore, Sodepur, Belgharia, Madhyamgram, Barasat, Dum Dum, greater Kolkata, across India, and abroad receive dedicated personal mentorship from home without commuting fatigue.",
       },
     },
     {

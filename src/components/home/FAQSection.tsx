@@ -25,9 +25,9 @@ const FAQ_ITEMS = [
       "Fees start from ₹1,500/month for once-a-week classes with Level 1 & 2 teachers (Class 5–10), ₹3,000/month for twice-a-week. Level 3 Senior Mentors charge ₹2,200–₹4,000/month. Level 4 Expert Teachers (Class 11–12) are ₹700/hour. There are no hidden registration fees or lock-in contracts.",
   },
   {
-    question: "Where is Let's Study MS located?",
+    question: "Where is Let's Study MS located and how are classes held?",
     answer:
-      "Our center is located at 118/105, Rabindrapally, Khardaha, Kolkata, North 24 Parganas, West Bengal 700117, India. We serve students from Khardaha, Barrackpore, Sodepur, Belgharia, Madhyamgram, Barasat, Rahara, Dum Dum, and greater Kolkata. We also offer online classes for international students.",
+      "Our registered academic office is at 118/105, Rabindrapally, Khardaha, Kolkata, West Bengal 700117. All classes are conducted 100% live and interactively online via Google Meet in strict micro-batches (3–5 students). This ensures that students from Khardaha, Barrackpore, Sodepur, Belgharia, Madhyamgram, Barasat, Dum Dum, greater Kolkata, across India, and abroad receive dedicated personal mentorship from home without commuting fatigue.",
   },
   {
     question: "What makes Let's Study MS different from other coaching centres?",

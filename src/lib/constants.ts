@@ -526,11 +526,16 @@ export const FEE_TABLE = [
 ] as const;
 
 // ─── Stats ───────────────────────────────────────────────
+export const TOTAL_FACULTY_COUNT = FACULTY_LEVELS.reduce(
+  (total, lvl) => total + lvl.teachers.length,
+  0
+);
+
 export const STATS = [
-  { label: "Dedicated Mentors", value: 10, suffix: "+" },
+  { label: "Dedicated Mentors", value: TOTAL_FACULTY_COUNT, suffix: "" },
   { label: "Max Batch Size", value: 5, suffix: " Students" },
   { label: "CBSE, ICSE, WB", value: 3, suffix: " Boards" },
-] as const;
+];
 
 // ─── Testimonials ────────────────────────────────────────
 export interface TestimonialItem {

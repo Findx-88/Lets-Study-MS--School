@@ -90,36 +90,15 @@ export function HeroSection() {
               </Link>
             </div>
 
-            {/* Key Micro-Badges inspired by the Boo template */}
-            <div className="pt-6 border-t border-slate-200/60 grid grid-cols-2 sm:grid-cols-3 gap-3 text-left">
-              <div className="flex items-center gap-2.5 bg-white/70 p-2.5 rounded-xl border border-slate-200/80 shadow-xs">
-                <div className="w-8 h-8 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
-                  <Users size={18} />
+            {/* Affiliation Banner */}
+            <div className="pt-6 border-t border-slate-200/60 flex justify-center lg:justify-start">
+              <div className="inline-flex items-center gap-3 bg-white/95 px-5 py-3 rounded-2xl border border-teal-200/90 shadow-sm hover:shadow-md hover:border-teal-400 transition-all">
+                <div className="w-9 h-9 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center shrink-0 border border-teal-100">
+                  <ShieldCheck size={20} className="text-teal-700" />
                 </div>
-                <div>
-                  <p className="text-xs font-bold text-navy-900">Pods of 3–4</p>
-                  <p className="text-[10px] text-slate-500">Class 5–6 Foundation</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2.5 bg-white/70 p-2.5 rounded-xl border border-slate-200/80 shadow-xs">
-                <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
-                  <Clock size={18} />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-navy-900">1.5 – 2 Hours</p>
-                  <p className="text-[10px] text-slate-500">Every Class Session</p>
-                </div>
-              </div>
-
-              <div className="col-span-2 sm:col-span-1 flex items-center gap-2.5 bg-white/70 p-2.5 rounded-xl border border-slate-200/80 shadow-xs">
-                <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                  <ShieldCheck size={18} />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-navy-900">IIT / ISI Track</p>
-                  <p className="text-[10px] text-slate-500">Long-term ladder</p>
-                </div>
+                <p className="text-xs sm:text-sm font-bold text-navy-950 tracking-tight">
+                  Affiliated with Ramanujan School of Mathematics (RSM)
+                </p>
               </div>
             </div>
           </motion.div>

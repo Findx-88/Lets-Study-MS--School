@@ -153,6 +153,7 @@ export interface TeacherProfile {
   teachingPhilosophy: string;
   achievements?: string;
   studentAchievements?: string;
+  offlineLocations?: string;
   tag: string;
   image?: string;
   imagePosition?: string;
@@ -312,6 +313,32 @@ export const FACULTY_LEVELS: readonly {
         studentAchievements: "ISC AIR 1 (2022), Cambridge International Rankings (2024, 2025)",
         tag: "Senior Mentor",
       },
+      {
+        name: "Tiasha",
+        fullName: "Tiasha Datta",
+        image: "/images/team/tiasha.png",
+        imagePosition: "object-[center_15%]",
+        degree: "M.A., B.Ed in English",
+        experience: "Senior Faculty",
+        subjects: "English & English Honours",
+        boards: "WBBSE, WBCHSE, CBSE & Honours",
+        teachingPhilosophy: "Turning complex English grammar and literature into simple, engaging, and easy-to-understand concepts.",
+        offlineLocations: "Madhyamgram",
+        tag: "Senior Mentor",
+      },
+      {
+        name: "Risha",
+        fullName: "Risha Das",
+        image: "/images/team/risha.jpg",
+        imagePosition: "object-[center_18%]",
+        degree: "B.A., M.A., B.Ed",
+        experience: "4 Years",
+        subjects: "English & English Honours (Class 5–12)",
+        boards: "WBBSE, CBSE & Honours / General",
+        teachingPhilosophy: "Personalized teaching to strengthen grammar, build vocabulary, enhance writing, and develop strong literature skills.",
+        offlineLocations: "Madhyamgram",
+        tag: "Senior Mentor",
+      },
     ],
     feeStructure: {
       note: "Class 5–10 & Class 8–12",
@@ -334,24 +361,28 @@ export const FACULTY_LEVELS: readonly {
     teachers: [
       {
         name: "Annesha",
-        fullName: "Annesha",
+        fullName: "Annesha Ghosh",
         image: "/images/team/annesha.png",
         imagePosition: "object-[center_20%]",
-        degree: "",
-        experience: "",
-        subjects: "",
-        teachingPhilosophy: "",
+        degree: "M.Sc. in Mathematics, B.Ed",
+        experience: "12 Years",
+        achievements: "CTET Qualified",
+        subjects: "Mathematics (Class 8–12)",
+        boards: "CBSE, ICSE, WB Board & International",
+        teachingPhilosophy: "Good communication skills, regular tests, ability to understand a student individually. Mentoring students from all across the world reflects a proven and widely trusted teaching approach.",
+        studentAchievements: "Guided 98 percentile board toppers, successful candidates in JEE",
         tag: "Expert Faculty",
       },
       {
         name: "Rahul",
-        fullName: "Rahul",
+        fullName: "Rahul Mandal",
         image: "/images/team/rahul.png",
-        imagePosition: "object-[center_35%]",
-        degree: "",
-        experience: "",
-        subjects: "",
-        teachingPhilosophy: "",
+        imagePosition: "object-[center_25%]",
+        degree: "Integrated BS-MS (IISER Kolkata)",
+        experience: "2 Years",
+        subjects: "Mathematics",
+        boards: "CBSE, ICSE, WBBSE",
+        teachingPhilosophy: "Making math visual, memorable and entirely achievable by teaching through empathy and unshakable belief in every student.",
         tag: "Expert Faculty",
       },
     ],

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { GraduationCap, Award, Clock, Star, Quote } from "lucide-react";
+import { GraduationCap, Award, Clock, Star, Quote, MapPin } from "lucide-react";
 import { FACULTY_LEVELS, getWhatsAppUrl } from "@/lib/constants";
 import type { TeacherProfile } from "@/lib/constants";
 
@@ -83,6 +83,12 @@ function TeacherCard({ teacher }: { teacher: TeacherProfile }) {
               {teacher.boards && (
                 <p className="text-[11px] font-medium text-slate-600">
                   Boards: <span className="text-slate-800 font-semibold">{teacher.boards}</span>
+                </p>
+              )}
+              {teacher.offlineLocations && (
+                <p className="text-[11px] font-medium text-slate-600 flex items-center gap-1 pt-1 border-t border-slate-200/60">
+                  <MapPin size={12} className="text-teal-700 shrink-0" />
+                  <span>Offline Center / Reach: <strong className="text-navy-950 font-bold">{teacher.offlineLocations}</strong></span>
                 </p>
               )}
             </div>

@@ -52,12 +52,10 @@ export function TestimonialsSection() {
 
   // Handle transition end for seamless circular wrap-around
   const handleTransitionEnd = () => {
-    if (currentIndex >= 2 * N) {
+    if (currentIndex >= 2 * N || currentIndex < N) {
       setIsTransitioning(false);
-      setCurrentIndex(currentIndex - N);
-    } else if (currentIndex < N) {
-      setIsTransitioning(false);
-      setCurrentIndex(currentIndex + N);
+      const normalized = ((currentIndex - N) % N + N) % N;
+      setCurrentIndex(N + normalized);
     }
   };
 

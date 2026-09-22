@@ -5,7 +5,10 @@ import { FEE_TABLE, CONTACT, getWhatsAppUrl } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Batches & Fees — Transparent Pricing & Small Batch Rules",
-  description: "View our transparent fee structure for Class 5 to 12. Small batches of 3–5 students, 1.5–2 hour sessions, starting from ₹1,500/month.",
+  description: "View our transparent fee structure for Class 5 to 12. Small batches of 3–5 students, 1.5–2 hour sessions, starting from ₹1,500/month. Khardaha, Kolkata.",
+  alternates: {
+    canonical: "/fees",
+  },
 };
 
 export default function FeesPage() {

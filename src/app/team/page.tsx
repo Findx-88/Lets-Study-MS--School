@@ -7,6 +7,9 @@ import type { TeacherProfile } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Our Teaching Team — Meet Our Educators",
   description: "Meet our dedicated educators across 4 tiers: from near-peer mentors to expert competitive faculty. Real profiles, real passion.",
+  alternates: {
+    canonical: "/team",
+  },
 };
 
 function TeacherCard({ teacher }: { teacher: TeacherProfile }) {
@@ -147,8 +150,46 @@ function TeacherCard({ teacher }: { teacher: TeacherProfile }) {
 }
 
 export default function TeamPage() {
+  const personSchemas = FACULTY_LEVELS.flatMap((lvl) =>
+    lvl.teachers.map((teacher) => ({
+      "@type": "Person",
+      name: teacher.fullName,
+      jobTitle: `${teacher.tag} — ${teacher.subjects}`,
+      worksFor: {
+        "@type": "EducationalOrganization",
+        name: "Let's Study MS — School Program",
+        url: "https://school.letsstudyms.com",
+      },
+      description: teacher.teachingPhilosophy,
+      knowsAbout: teacher.subjects,
+      hasCredential: teacher.degree,
+      url: `https://school.letsstudyms.com/team#${teacher.name.toLowerCase()}`,
+      ...(teacher.image
+        ? {
+            image: `https://school.letsstudyms.com${teacher.image}`,
+          }
+        : {}),
+    }))
+  );
+
+  const teamSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Teaching Team at Let's Study MS — School Program",
+    numberOfItems: personSchemas.length,
+    itemListElement: personSchemas.map((person, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: person,
+    })),
+  };
+
   return (
     <div className="pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(teamSchema) }}
+      />
       {/* Header */}
       <section className="bg-gradient-to-b from-teal-50/50 via-cream-50/30 to-white pt-28 pb-14 md:pt-36 md:pb-16 border-b border-slate-200/60 math-bg text-center">
         <div className="max-w-4xl mx-auto px-4">

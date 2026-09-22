@@ -6,6 +6,9 @@ import { Sparkles, Users, Clock, BookOpen, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Classroom Gallery — Inside Let's Study MS School Pods",
   description: "View photographs of our small batch classrooms, study tables, and interactive teaching environment in Khardaha, Kolkata.",
+  alternates: {
+    canonical: "/gallery",
+  },
 };
 
 const GALLERY_ITEMS = [

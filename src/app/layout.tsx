@@ -5,12 +5,12 @@ import { Footer } from "@/components/layout/Footer";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
 import { MobileStickyBar } from "@/components/layout/MobileStickyBar";
-import { BRAND } from "@/lib/constants";
+import { BRAND, CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://school.letsstudyms.com"),
   title: {
-    default: `${BRAND.fullName} | Expert Coaching Std 5–12 | West Bengal`,
+    default: `${BRAND.fullName} | Expert Coaching Std 5–12 | Khardaha, Kolkata`,
     template: `%s | ${BRAND.fullName}`,
   },
   description: BRAND.description,
@@ -24,10 +24,19 @@ export const metadata: Metadata = {
     "best tuition centre Kolkata",
     "small batch coaching West Bengal",
     "Lets Study MS school program",
+    "tuition in Khardaha",
+    "coaching near Barrackpore",
+    "maths tuition Sodepur",
+    "CBSE coaching Madhyamgram",
+    "home tuition North 24 Parganas",
+    "Ramanujan School of Mathematics",
   ],
   authors: [{ name: BRAND.parentName }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: `${BRAND.fullName} | Expert Coaching for Std 5–12`,
+    title: `${BRAND.fullName} | Expert Coaching for Std 5–12 | Khardaha, Kolkata`,
     description: BRAND.description,
     url: "https://school.letsstudyms.com",
     siteName: BRAND.fullName,
@@ -44,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${BRAND.fullName} | Expert Coaching for Std 5–12`,
+    title: `${BRAND.fullName} | Expert Coaching for Std 5–12 | Khardaha, Kolkata`,
     description: BRAND.description,
     images: [BRAND.logoUrl],
   },
@@ -72,18 +81,20 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <meta name="geo.region" content="IN-WB" />
-        <meta name="geo.placename" content="West Bengal, India" />
-        <meta name="geo.position" content="22.5744;88.3629" />
+        <meta name="geo.placename" content="Khardaha, North 24 Parganas, West Bengal, India" />
+        <meta name="geo.position" content="22.7214;88.3752" />
+        <meta name="ICBM" content="22.7214, 88.3752" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "EducationalOrganization",
+              "@type": ["EducationalOrganization", "LocalBusiness"],
               name: BRAND.fullName,
-              alternateName: BRAND.name,
+              alternateName: [BRAND.name, "Let's Study School", "Ramanujan School of Mathematics School Division"],
               url: "https://school.letsstudyms.com",
-              logo: BRAND.logoUrl,
+              logo: "https://school.letsstudyms.com" + BRAND.logoUrl,
+              image: "https://school.letsstudyms.com" + BRAND.logoUrl,
               description: BRAND.description,
               parentOrganization: {
                 "@type": "EducationalOrganization",
@@ -98,10 +109,60 @@ export default function RootLayout({
                 postalCode: "700117",
                 addressCountry: "IN",
               },
-              telephone: "+91-8777484102",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 22.7214,
+                longitude: 88.3752,
+              },
+              telephone: "+91-8481819726",
               email: "letsstudy2022bu@gmail.com",
-              areaServed: ["West Bengal", "Kolkata", "India"],
+              priceRange: "₹1,500 – ₹4,000/month",
+              openingHours: "Mo-Su 08:00-21:00",
+              areaServed: [
+                "Khardaha", "Barrackpore", "Sodepur", "Belgharia",
+                "Madhyamgram", "Barasat", "Rahara", "Dum Dum",
+                "Bardhaman", "North 24 Parganas", "Kolkata", "West Bengal", "India",
+              ],
+              sameAs: [
+                CONTACT.social.facebook,
+                CONTACT.social.instagram,
+                CONTACT.social.linkedin,
+                CONTACT.social.youtube,
+                CONTACT.social.telegram,
+                BRAND.parentUrl,
+              ],
               foundingDate: "2022",
+              numberOfEmployees: {
+                "@type": "QuantitativeValue",
+                value: 14,
+              },
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Academic Coaching Programs",
+                itemListElement: [
+                  {
+                    "@type": "OfferCatalog",
+                    name: "Level 1 & 2 — Class 5–10",
+                    itemListElement: [
+                      {
+                        "@type": "Offer",
+                        itemOffered: {
+                          "@type": "Service",
+                          name: "Once-a-week coaching (Class 5–10)",
+                        },
+                        price: "1500",
+                        priceCurrency: "INR",
+                        priceSpecification: {
+                          "@type": "UnitPriceSpecification",
+                          price: "1500",
+                          priceCurrency: "INR",
+                          unitText: "month",
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
             }),
           }}
         />

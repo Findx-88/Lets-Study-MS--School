@@ -5,12 +5,51 @@ import { SUBJECTS, BOARDS, getWhatsAppUrl } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Academics — Subjects & Board Curriculums (Std 5–12)",
-  description: "Comprehensive curriculum alignment across CBSE, ICSE and WB Board for Mathematics, Physics, Chemistry, Biology, and English.",
+  description: "Comprehensive curriculum alignment across CBSE, ICSE and WB Board for Mathematics, Physics, Chemistry, Biology, and English. Small batch coaching in Khardaha, Kolkata.",
+  alternates: {
+    canonical: "/academics",
+  },
 };
 
 export default function AcademicsPage() {
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: SUBJECTS.map((subject, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Course",
+        name: `${subject.name} Coaching (Std 5–12)`,
+        description: subject.description,
+        provider: {
+          "@type": "EducationalOrganization",
+          name: "Let's Study MS — School Program",
+          url: "https://school.letsstudyms.com",
+        },
+        educationalLevel: "Secondary and Higher Secondary (Std 5–12)",
+        inLanguage: "en",
+        courseCode: subject.id.toUpperCase(),
+        hasCourseInstance: subject.boards.map((board) => ({
+          "@type": "CourseInstance",
+          name: `${subject.name} — ${board}`,
+          courseMode: "Blended",
+          courseWorkload: "PT1H30M to PT2H per session",
+          instructor: {
+            "@type": "Organization",
+            name: "Let's Study MS — School Program",
+          },
+        })),
+      },
+    })),
+  };
+
   return (
     <div className="pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
+      />
       {/* Header */}
       <section className="bg-gradient-to-b from-teal-50/60 via-cream-50 to-white pt-28 pb-16 md:pt-36 md:pb-20 border-b border-slate-200/60 math-bg text-center">
         <div className="max-w-4xl mx-auto px-4">

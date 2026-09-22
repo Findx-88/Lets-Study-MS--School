@@ -6,7 +6,10 @@ import { BRAND, CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Us — Our Story & Academic Philosophy",
-  description: "Learn about Let's Study MS School Program — the school division of West Bengal's leading higher-mathematics institute.",
+  description: "Learn about Let's Study MS School Program — the school division of West Bengal's leading higher-mathematics institute. Affiliated with Ramanujan School of Mathematics (RSM).",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {

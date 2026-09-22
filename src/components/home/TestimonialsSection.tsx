@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import {
   Quote,
@@ -11,92 +11,61 @@ import {
   MapPin,
   GraduationCap,
 } from "lucide-react";
-import { TESTIMONIALS } from "@/lib/constants";
+import { TESTIMONIALS, type TestimonialItem } from "@/lib/constants";
 
 export function TestimonialsSection() {
-  const N = TESTIMONIALS.length; // 12 items
-  const [currentIndex, setCurrentIndex] = useState(N); // Start in middle set
-  const [isTransitioning, setIsTransitioning] = useState(true);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
-  const [itemsPerPage, setItemsPerPage] = useState(3);
-  const touchStartX = useRef<number | null>(null);
+  const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({});
+  const isInteracting = useRef(false);
 
-  // 3 copies to create a seamless infinite circular loop
-  const extendedTestimonials = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
+  // Render 2 duplicate sets to create an infinite continuous loop
+  const doubleList = [...TESTIMONIALS, ...TESTIMONIALS];
 
-  // Responsive calculation for items visible per slide
+  // Continuous slow rotation loop
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setItemsPerPage(1);
-      } else if (window.innerWidth < 1024) {
-        setItemsPerPage(2);
-      } else {
-        setItemsPerPage(3);
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let animId: number;
+
+    const tick = () => {
+      if (!isPaused && !isInteracting.current && container) {
+        const halfWidth = container.scrollWidth / 2;
+        container.scrollLeft += 0.65; // Slow, readable drift speed
+
+        // Seamless wrap-around when the first set has scrolled past
+        if (container.scrollLeft >= halfWidth) {
+          container.scrollLeft -= halfWidth;
+        }
       }
+      animId = requestAnimationFrame(tick);
     };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
-  const nextSlide = useCallback(() => {
-    if (!isTransitioning) return;
-    setCurrentIndex((prev) => prev + 1);
-  }, [isTransitioning]);
+    animId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animId);
+  }, [isPaused]);
 
-  const prevSlide = useCallback(() => {
-    if (!isTransitioning) return;
-    setCurrentIndex((prev) => prev - 1);
-  }, [isTransitioning]);
-
-  // Handle transition end for seamless circular wrap-around
-  const handleTransitionEnd = () => {
-    if (currentIndex >= 2 * N || currentIndex < N) {
-      setIsTransitioning(false);
-      const normalized = ((currentIndex - N) % N + N) % N;
-      setCurrentIndex(N + normalized);
-    }
+  // Manual scroll controls
+  const handleScrollLeft = () => {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollBy({ left: -360, behavior: "smooth" });
   };
 
-  // Re-enable transition on the next animation frame after silent index reset
-  useEffect(() => {
-    if (!isTransitioning) {
-      const raf = requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setIsTransitioning(true);
-        });
-      });
-      return () => cancelAnimationFrame(raf);
+  const handleScrollRight = () => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    const halfWidth = container.scrollWidth / 2;
+    if (container.scrollLeft >= halfWidth) {
+      container.scrollLeft -= halfWidth;
     }
-  }, [isTransitioning]);
-
-  // Auto-rotation effect (every 4.5 seconds, pauses when user hovers or interacts)
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [isPaused, nextSlide]);
-
-  // Touch handlers for mobile swipe
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
+    scrollRef.current.scrollBy({ left: 360, behavior: "smooth" });
   };
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
-    if (deltaX > 50) {
-      prevSlide();
-    } else if (deltaX < -50) {
-      nextSlide();
-    }
-    touchStartX.current = null;
+  const toggleExpand = (cardKey: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setExpandedCards((prev) => ({ ...prev, [cardKey]: !prev[cardKey] }));
   };
-
-  const activeDotIndex = ((currentIndex - N) % N + N) % N;
 
   return (
     <section
@@ -105,165 +74,159 @@ export function TestimonialsSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black font-heading text-navy-950">
-            Real Academic Results, Real Voices
-          </h2>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+          <div>
+            <h2 className="text-3xl sm:text-4xl font-black font-heading text-navy-950">
+              Real Academic Results, Real Voices
+            </h2>
+          </div>
 
           {/* Carousel Manual Controls */}
           <div className="flex items-center gap-3 shrink-0 self-start md:self-auto">
             <button
-              onClick={prevSlide}
-              aria-label="Previous testimonial"
-              className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:bg-teal-50 hover:border-teal-400 text-slate-700 hover:text-teal-900 transition-all shadow-sm flex items-center justify-center cursor-pointer"
+              onClick={handleScrollLeft}
+              aria-label="Scroll left"
+              className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:bg-teal-50 hover:border-teal-400 text-slate-700 hover:text-teal-900 transition-all shadow-sm flex items-center justify-center cursor-pointer active:scale-95"
             >
               <ChevronLeft size={18} />
             </button>
             <button
-              onClick={nextSlide}
-              aria-label="Next testimonial"
-              className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:bg-teal-50 hover:border-teal-400 text-slate-700 hover:text-teal-900 transition-all shadow-sm flex items-center justify-center cursor-pointer"
+              onClick={handleScrollRight}
+              aria-label="Scroll right"
+              className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:bg-teal-50 hover:border-teal-400 text-slate-700 hover:text-teal-900 transition-all shadow-sm flex items-center justify-center cursor-pointer active:scale-95"
             >
               <ChevronRight size={18} />
             </button>
           </div>
         </div>
 
-        {/* Carousel Viewport */}
+        {/* Continuous Marquee Scrolling Track */}
         <div
-          className="relative overflow-hidden cursor-grab active:cursor-grabbing"
+          ref={scrollRef}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+          onTouchStart={() => {
+            isInteracting.current = true;
+            setIsPaused(true);
+          }}
+          onTouchEnd={() => {
+            isInteracting.current = false;
+            setIsPaused(false);
+          }}
+          className="flex gap-6 overflow-x-auto py-3 px-1 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden select-none cursor-grab active:cursor-grabbing"
         >
-          <div
-            className={`flex ${
-              isTransitioning ? "transition-transform duration-700 ease-out" : ""
-            }`}
-            style={{
-              transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
-            }}
-            onTransitionEnd={handleTransitionEnd}
-          >
-            {extendedTestimonials.map((item, idx) => (
+          {doubleList.map((item, index) => {
+            const cardKey = `${item.id}-${index}`;
+            const isExpanded = !!expandedCards[cardKey];
+            const isLong = item.quote.length > 130 || !!item.secondaryQuote;
+
+            return (
               <div
-                key={`${item.id}-${idx}`}
-                className="px-3 shrink-0"
-                style={{ width: `${100 / itemsPerPage}%` }}
+                key={cardKey}
+                onClick={() => setIsPaused((prev) => !prev)}
+                className="w-[310px] sm:w-[350px] md:w-[370px] shrink-0 bg-white rounded-2xl p-5 border border-slate-200/90 shadow-[0_2px_12px_-2px_rgba(15,23,42,0.06)] hover:shadow-[0_12px_28px_-6px_rgba(13,148,136,0.18)] hover:border-teal-400 transition-all duration-300 flex flex-col justify-between"
               >
-                <div className="h-full bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-[0_16px_36px_-6px_rgba(13,148,136,0.16)] hover:border-teal-400 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
-                  {/* Top Bar: Board & Score Badge (No Stars) */}
-                  <div>
-                    <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100 min-h-[32px]">
-                      {item.board ? (
-                        <span className="text-[10px] font-bold text-teal-800 bg-teal-100/70 px-2.5 py-0.5 rounded-md">
-                          {item.board} {item.standard ? `• ${item.standard}` : ""}
-                        </span>
-                      ) : <span />}
+                <div>
+                  {/* Top Bar: Board Tag & Score Badge */}
+                  <div className="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b border-slate-100 min-h-[30px]">
+                    {item.board ? (
+                      <span className="text-[10px] font-bold text-teal-800 bg-teal-100/70 px-2 py-0.5 rounded-md">
+                        {item.board} {item.standard ? `• ${item.standard}` : ""}
+                      </span>
+                    ) : <span />}
 
-                      {item.score && (
-                        <span className="inline-flex items-center gap-1 text-xs font-black text-teal-800 bg-teal-50 border border-teal-200 px-2.5 py-0.5 rounded-full shadow-xs ml-auto">
-                          <Award size={13} className="text-teal-700 shrink-0" />
-                          <span>{item.score}</span>
-                        </span>
-                      )}
+                    {item.score && (
+                      <span className="inline-flex items-center gap-1 text-[11px] font-black text-teal-800 bg-teal-50 border border-teal-200 px-2.5 py-0.5 rounded-full shadow-2xs ml-auto">
+                        <Award size={12} className="text-teal-700 shrink-0" />
+                        <span>{item.score}</span>
+                      </span>
+                    )}
+                  </div>
+
+                  {/* School & Exam Details */}
+                  <div className="space-y-0.5 mb-3">
+                    <div className="flex items-start gap-1.5 text-xs text-slate-800 font-semibold leading-snug">
+                      <School size={13} className="text-teal-700 shrink-0 mt-0.5" />
+                      <span className="line-clamp-1">{item.school}</span>
                     </div>
 
-                    {/* School & Exam Details */}
-                    <div className="space-y-1 mb-4">
-                      <div className="flex items-start gap-1.5 text-xs text-slate-700 font-medium">
-                        <School size={14} className="text-teal-700 shrink-0 mt-0.5" />
-                        <span className="line-clamp-2">{item.school}</span>
-                      </div>
-
-                      {item.exam && (
-                        <div className="flex items-center gap-2 text-[11px] text-slate-500 pl-5">
-                          <span className="font-semibold text-slate-700">{item.exam}</span>
-                          {item.passingYear && (
-                            <>
-                              <span>•</span>
-                              <span>Passing: {item.passingYear}</span>
-                            </>
-                          )}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Quote text */}
-                    <div className="relative mb-4">
-                      <Quote size={22} className="text-teal-500/30 mb-1 shrink-0" />
-                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic line-clamp-6">
-                        &ldquo;{item.quote}&rdquo;
+                    {item.exam && (
+                      <p className="text-[11px] text-slate-500 pl-5">
+                        {item.exam}
+                        {item.passingYear ? ` • Passing: ${item.passingYear}` : ""}
                       </p>
-                    </div>
+                    )}
+                  </div>
 
-                    {/* Secondary quote (e.g. Guardian note) */}
-                    {item.secondaryQuote && (
-                      <div className="p-3 rounded-xl bg-teal-50/50 border border-teal-100/70 text-[11px] text-slate-600 leading-relaxed italic mb-4">
+                  {/* Quote Text */}
+                  <div className="relative mb-2">
+                    <Quote size={18} className="text-teal-500/30 mb-1 shrink-0" />
+                    <p
+                      className={`text-xs sm:text-[13px] text-slate-700 leading-relaxed italic ${
+                        isExpanded ? "" : "line-clamp-3"
+                      }`}
+                    >
+                      &ldquo;{item.quote}&rdquo;
+                    </p>
+
+                    {/* Secondary Quote (Guardian review) if expanded */}
+                    {isExpanded && item.secondaryQuote && (
+                      <div className="mt-2.5 p-2.5 rounded-xl bg-teal-50/60 border border-teal-100/80 text-[11px] text-slate-600 leading-relaxed italic">
                         {item.secondaryQuote}
                       </div>
                     )}
-                  </div>
 
-                  {/* Bottom Footer: Student / Parent & Interactive Tutor Tag */}
-                  <div className="pt-4 border-t border-slate-100 mt-2">
-                    <div className="flex items-center justify-between gap-2">
-                      <div>
-                        <h4 className="text-sm font-bold text-navy-950 font-heading">
-                          {item.studentName}
-                        </h4>
-                        <span className="text-[11px] font-medium text-slate-500">
-                          {item.role}
-                        </span>
-                      </div>
-
-                      {item.location && (
-                        <span className="flex items-center gap-1 text-[11px] font-medium text-slate-400">
-                          <MapPin size={11} className="text-teal-600" />
-                          <span>{item.location}</span>
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Interactive Teacher Link */}
-                    {item.tutorMentioned && (
-                      <div className="mt-2.5">
-                        <Link
-                          href={item.tutorLink || "/team"}
-                          className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-teal-800 bg-teal-50/80 hover:bg-teal-100 hover:text-teal-950 border border-teal-200/70 hover:border-teal-400 px-2.5 py-1 rounded-lg transition-all group/tutor cursor-pointer"
-                          title="View Mentor Profile"
-                        >
-                          <GraduationCap size={13} className="text-teal-700 group-hover/tutor:scale-110 transition-transform shrink-0" />
-                          <span>Tutor: {item.tutorMentioned}</span>
-                          <span className="text-[10px] text-teal-600 font-bold group-hover/tutor:translate-x-0.5 transition-transform">→</span>
-                        </Link>
-                      </div>
+                    {/* Read more / Show less toggle */}
+                    {isLong && (
+                      <button
+                        onClick={(e) => toggleExpand(cardKey, e)}
+                        className="mt-1 text-[11px] font-bold text-teal-700 hover:text-teal-900 cursor-pointer inline-flex items-center gap-0.5 hover:underline"
+                      >
+                        {isExpanded ? "Show less ↑" : "Read more ↓"}
+                      </button>
                     )}
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Carousel Indicators / Dots */}
-        <div className="flex items-center justify-center gap-2 mt-8">
-          {[...Array(N)].map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => {
-                setIsTransitioning(true);
-                setCurrentIndex(N + idx);
-              }}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                activeDotIndex === idx
-                  ? "w-8 bg-teal-700"
-                  : "w-2 bg-slate-300 hover:bg-slate-400"
-              }`}
-            />
-          ))}
+                {/* Bottom Footer: Student Info & Clickable Tutor Link */}
+                <div className="pt-3 border-t border-slate-100 mt-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div>
+                      <h4 className="text-[13px] font-bold text-navy-950 font-heading leading-tight">
+                        {item.studentName}
+                      </h4>
+                      <span className="text-[10px] font-medium text-slate-500">
+                        {item.role}
+                      </span>
+                    </div>
+
+                    {item.location && (
+                      <span className="flex items-center gap-1 text-[10px] font-medium text-slate-400">
+                        <MapPin size={10} className="text-teal-600" />
+                        <span>{item.location}</span>
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Teacher Tag (Links straight to teacher's profile on /team) */}
+                  {item.tutorMentioned && (
+                    <div className="mt-2">
+                      <Link
+                        href={item.tutorLink || "/team"}
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1 text-[10px] font-semibold text-teal-800 bg-teal-50/80 hover:bg-teal-100 hover:text-teal-950 border border-teal-200/70 hover:border-teal-400 px-2 py-0.5 rounded-md transition-all group/tutor cursor-pointer"
+                        title="View Mentor Profile on Team Page"
+                      >
+                        <GraduationCap size={11} className="text-teal-700 group-hover/tutor:scale-110 transition-transform shrink-0" />
+                        <span>Tutor: {item.tutorMentioned}</span>
+                        <span className="text-[9px] text-teal-600 font-bold group-hover/tutor:translate-x-0.5 transition-transform">→</span>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

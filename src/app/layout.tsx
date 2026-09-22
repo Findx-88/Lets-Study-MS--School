@@ -170,7 +170,7 @@ export default function RootLayout({
       <body className="antialiased" suppressHydrationWarning>
         <AnnouncementBar />
         <Header />
-        <main className="pb-16 md:pb-0">{children}</main>
+        <main className="pb-0">{children}</main>
         <Footer />
         <WhatsAppFloat />
         <MobileStickyBar />

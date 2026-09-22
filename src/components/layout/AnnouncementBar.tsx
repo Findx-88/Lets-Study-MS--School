@@ -4,7 +4,7 @@ import { BRAND, CONTACT } from "@/lib/constants";
 
 export function AnnouncementBar() {
   return (
-    <div className="bg-navy-950 text-white text-xs py-2 px-4 relative z-50 border-b border-navy-800">
+    <div className="hidden md:block bg-navy-950 text-white text-xs py-2 px-4 relative z-50 border-b border-navy-800">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2 font-medium">
           <span className="inline-flex items-center gap-1 bg-amber-500 text-navy-950 px-2 py-0.5 rounded-full font-bold text-[10px] uppercase tracking-wider">

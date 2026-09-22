@@ -5,7 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronRight, Phone, MessageCircle } from "lucide-react";
+import { Menu, X, ChevronRight, Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { NAV_ITEMS, BRAND, CONTACT, getWhatsAppUrl } from "@/lib/constants";
 
 export function Header() {
@@ -35,7 +36,7 @@ export function Header() {
       {/* ─── Dynamic Island Floating Navbar ─────────────────────── */}
       <header
         className={`fixed left-1/2 -translate-x-1/2 z-40 transition-all duration-500 w-[94%] max-w-4xl ${
-          isScrolled ? "top-3" : "top-10 md:top-12"
+          isScrolled ? "top-2.5 sm:top-3" : "top-2.5 sm:top-3 md:top-12"
         }`}
       >
         <div
@@ -183,9 +184,9 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsMobileOpen(false)}
-                  className="btn-pill bg-emerald-600 hover:bg-emerald-700 text-white w-full justify-center py-2.5 text-xs font-bold shadow-md shadow-emerald-700/20"
+                  className="btn-pill bg-emerald-600 hover:bg-emerald-700 text-white w-full justify-center py-2.5 text-xs font-bold shadow-md shadow-emerald-700/20 flex items-center gap-2"
                 >
-                  <MessageCircle size={15} className="shrink-0" />
+                  <WhatsAppIcon size={16} className="shrink-0" />
                   <span>Book Free Demo on WhatsApp</span>
                 </a>
                 <a

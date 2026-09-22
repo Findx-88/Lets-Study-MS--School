@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { MessageCircle, Phone, Clock, MapPin, Sparkles, ArrowRight } from "lucide-react";
+import { Phone, Clock, MapPin, Sparkles, ArrowRight } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { CONTACT, getWhatsAppUrl } from "@/lib/constants";
 
 export function AdmissionCTA() {
@@ -39,9 +40,9 @@ export function AdmissionCTA() {
                   href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-pill btn-whatsapp text-sm px-6 py-3.5 shadow-xl w-full sm:w-auto justify-center font-bold"
+                  className="btn-pill btn-whatsapp text-sm px-6 py-3.5 shadow-xl w-full sm:w-auto justify-center font-bold flex items-center gap-2"
                 >
-                  <MessageCircle size={18} />
+                  <WhatsAppIcon size={18} />
                   <span>Chat on WhatsApp Instantly</span>
                 </a>
 

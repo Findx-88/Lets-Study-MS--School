@@ -48,7 +48,7 @@ export default function ContactPage() {
   return (
     <div className="pb-20">
       {/* Header */}
-      <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white pt-28 pb-16 md:pt-36 md:pb-20 border-b border-slate-200/60 math-bg text-center">
+      <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white pt-16 pb-12 sm:pt-24 md:pt-36 md:pb-20 border-b border-slate-200/60 math-bg text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h1 className="text-3xl sm:text-5xl font-black font-heading text-navy-950">
             Ask any Question
@@ -106,7 +106,7 @@ export default function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-slate-50/50"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-slate-50/50"
                     />
                   </div>
 
@@ -122,7 +122,7 @@ export default function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, phone: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-slate-50/50"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-slate-50/50"
                     />
                   </div>
                 </div>
@@ -138,7 +138,7 @@ export default function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, standard: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white"
                     >
                       <option value="Std 5">Std 5</option>
                       <option value="Std 6">Std 6</option>
@@ -160,7 +160,7 @@ export default function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, board: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white"
                     >
                       <option value="CBSE">CBSE</option>
                       <option value="ICSE">ICSE / ISC</option>
@@ -209,7 +209,7 @@ export default function ContactPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
                     }
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-slate-50/50"
                   />
                 </div>
 

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Sparkles, Video, Monitor, Laptop, ArrowRight, MessageCircle } from "lucide-react";
+import { Sparkles, Video, Monitor, Laptop, ArrowRight } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { getWhatsAppUrl } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -45,9 +46,9 @@ const GALLERY_ITEMS = [
 
 export default function GalleryPage() {
   return (
-    <div className="pt-28 pb-20">
+    <div className="pt-16 sm:pt-24 md:pt-28 pb-20">
       {/* Header */}
-      <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white py-16 border-b border-slate-200/60 math-bg text-center">
+      <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white py-12 sm:py-16 border-b border-slate-200/60 math-bg text-center">
         <div className="max-w-4xl mx-auto px-4">
           <span className="text-xs font-bold uppercase tracking-widest text-teal-800 bg-teal-100/80 px-3.5 py-1 rounded-full border border-teal-200 inline-flex items-center gap-1.5">
             <Video size={13} className="text-teal-700" />
@@ -111,7 +112,7 @@ export default function GalleryPage() {
               rel="noopener noreferrer"
               className="btn-pill btn-whatsapp text-xs !px-6 !py-3 font-bold flex items-center gap-1.5 shadow-md w-full sm:w-auto justify-center"
             >
-              <MessageCircle size={16} />
+              <WhatsAppIcon size={16} />
               <span>Schedule Free Demo Class</span>
             </a>
             <Link

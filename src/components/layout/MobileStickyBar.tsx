@@ -1,13 +1,14 @@
 "use client";
 
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { CONTACT, getWhatsAppUrl } from "@/lib/constants";
 
 export function MobileStickyBar() {
   return (
     <aside
       aria-label="Mobile quick actions"
-      className="fixed bottom-0 inset-x-0 z-40 md:hidden bg-white/95 backdrop-blur-md border-t border-slate-200/90 px-3.5 py-2.5 shadow-[0_-4px_20px_rgba(15,23,42,0.08)]"
+      className="fixed bottom-0 inset-x-0 z-40 md:hidden bg-white/95 backdrop-blur-md border-t border-slate-200/90 px-3.5 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom,0px))] shadow-[0_-4px_20px_rgba(15,23,42,0.08)]"
     >
       <div className="flex items-center gap-2.5 max-w-md mx-auto">
         {/* Direct Phone Call Button */}
@@ -26,7 +27,7 @@ export function MobileStickyBar() {
           rel="noopener noreferrer"
           className="flex-[1.4] flex items-center justify-center gap-1.5 py-2.5 px-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white font-heading font-bold text-xs shadow-md shadow-emerald-700/20 transition-all"
         >
-          <MessageCircle size={15} className="fill-white/20 shrink-0" />
+          <WhatsAppIcon size={16} className="shrink-0" />
           <span>Book Free Demo</span>
         </a>
       </div>

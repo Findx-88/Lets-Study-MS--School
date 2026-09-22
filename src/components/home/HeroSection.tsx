@@ -8,7 +8,7 @@ import { BRAND, CONTACT, getWhatsAppUrl } from "@/lib/constants";
 
 export function HeroSection() {
   return (
-    <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden gradient-hero math-bg">
+    <section className="relative pt-16 pb-16 sm:pt-24 md:pt-28 md:pb-20 overflow-hidden gradient-hero math-bg">
       {/* Subtle floating math symbols */}
       <div className="absolute top-24 left-10 text-teal-800/10 font-serif text-8xl select-none pointer-events-none hidden lg:block animate-pulse">
         ∫
@@ -155,7 +155,7 @@ export function HeroSection() {
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="absolute -bottom-6 -right-4 sm:-right-6 bg-navy-900 text-white p-4 rounded-2xl shadow-2xl border border-navy-700 max-w-[210px]"
+              className="absolute -bottom-6 right-2 sm:-right-6 bg-navy-900 text-white p-4 rounded-2xl shadow-2xl border border-navy-700 max-w-[210px]"
             >
               <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider block">
                 Transparent Fees

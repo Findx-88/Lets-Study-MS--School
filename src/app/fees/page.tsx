@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Check, Clock, Users, ShieldCheck, ArrowRight, MessageCircle } from "lucide-react";
+import { Check, Clock, Users, ShieldCheck, ArrowRight } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { FEE_TABLE, CONTACT, getWhatsAppUrl } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function FeesPage() {
   return (
     <div className="pb-20">
       {/* Header */}
-      <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white pt-28 pb-16 md:pt-36 md:pb-20 border-b border-slate-200/60 math-bg text-center">
+      <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white pt-16 pb-12 sm:pt-24 md:pt-36 md:pb-20 border-b border-slate-200/60 math-bg text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h1 className="text-3xl sm:text-5xl font-black font-heading text-navy-950">
             Batches & Fee Structure
@@ -171,7 +171,7 @@ export default function FeesPage() {
             rel="noopener noreferrer"
             className="btn-pill btn-whatsapp text-xs font-bold inline-flex items-center gap-2 !px-6 !py-3"
           >
-            <MessageCircle size={16} />
+            <WhatsAppIcon size={16} />
             <span>Chat on WhatsApp for Personalized Plan</span>
           </a>
         </div>

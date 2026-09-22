@@ -18,9 +18,40 @@ export function StatsBar() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="bg-white rounded-3xl shadow-xl border border-slate-100 p-6 sm:p-8"
+        className="bg-white rounded-3xl shadow-xl border border-slate-100 p-4 sm:p-8"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+        {/* ─── Mobile View: Perfectly aligned modern stat cards with zero dividers ─── */}
+        <div className="flex flex-col gap-2.5 sm:hidden">
+          {STATS.map((stat, index) => {
+            const IconComponent = STAT_ICONS[index % STAT_ICONS.length].icon;
+            const iconStyle = STAT_ICONS[index % STAT_ICONS.length].color;
+
+            return (
+              <div
+                key={stat.label}
+                className="flex items-center gap-3.5 bg-slate-50/80 rounded-2xl p-3 border border-slate-100/90"
+              >
+                <div
+                  className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${iconStyle}`}
+                >
+                  <IconComponent size={22} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-xl font-black font-heading text-navy-950 leading-tight">
+                    {stat.value}
+                    <span className="text-amber-500 font-bold ml-1">{stat.suffix}</span>
+                  </p>
+                  <p className="text-xs font-semibold text-slate-500 mt-0.5">
+                    {stat.label}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ─── Desktop View: 100% Unchanged original 3-column horizontal with dividers ─── */}
+        <div className="hidden sm:grid sm:grid-cols-3 sm:gap-8 sm:divide-x divide-slate-100">
           {STATS.map((stat, index) => {
             const IconComponent = STAT_ICONS[index % STAT_ICONS.length].icon;
             const iconStyle = STAT_ICONS[index % STAT_ICONS.length].color;
@@ -29,7 +60,7 @@ export function StatsBar() {
               <div
                 key={stat.label}
                 className={`flex items-center justify-center gap-4 ${
-                  index > 0 ? "pt-4 sm:pt-0 sm:pl-8" : ""
+                  index > 0 ? "sm:pl-8" : ""
                 }`}
               >
                 <div

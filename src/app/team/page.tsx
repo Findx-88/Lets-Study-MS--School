@@ -191,7 +191,7 @@ export default function TeamPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(teamSchema) }}
       />
       {/* Header */}
-      <section className="bg-gradient-to-b from-teal-50/50 via-cream-50/30 to-white pt-16 pb-12 sm:pt-24 md:pt-36 md:pb-16 border-b border-slate-200/60 math-bg text-center">
+      <section className="bg-gradient-to-b from-teal-50/50 via-cream-50/30 to-white pt-24 pb-12 sm:pt-24 md:pt-36 md:pb-16 border-b border-slate-200/60 math-bg text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-heading text-navy-950">
             Our Teaching Team & Mentors

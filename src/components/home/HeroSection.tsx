@@ -8,7 +8,7 @@ import { BRAND, CONTACT, getWhatsAppUrl } from "@/lib/constants";
 
 export function HeroSection() {
   return (
-    <section className="relative pt-16 pb-16 sm:pt-24 md:pt-28 md:pb-20 overflow-hidden gradient-hero math-bg">
+    <section className="relative pt-24 pb-16 sm:pt-24 md:pt-28 md:pb-20 overflow-hidden gradient-hero math-bg">
       {/* Subtle floating math symbols */}
       <div className="absolute top-24 left-10 text-teal-800/10 font-serif text-8xl select-none pointer-events-none hidden lg:block animate-pulse">
         ∫

@@ -16,7 +16,7 @@ export default function AboutPage() {
   return (
     <div className="pb-20">
       {/* Hero Header */}
-      <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white pt-16 pb-12 sm:pt-24 md:pt-36 md:pb-20 border-b border-slate-200/60 math-bg">
+      <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white pt-24 pb-12 sm:pt-24 md:pt-36 md:pb-20 border-b border-slate-200/60 math-bg">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-3xl sm:text-5xl font-black font-heading text-navy-950 leading-tight">
             Building the Foundation for Lifelong Analytical Excellence

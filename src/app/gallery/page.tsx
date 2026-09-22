@@ -46,7 +46,7 @@ const GALLERY_ITEMS = [
 
 export default function GalleryPage() {
   return (
-    <div className="pt-16 sm:pt-24 md:pt-28 pb-20">
+    <div className="pt-24 sm:pt-24 md:pt-28 pb-20">
       {/* Header */}
       <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white py-12 sm:py-16 border-b border-slate-200/60 math-bg text-center">
         <div className="max-w-4xl mx-auto px-4">

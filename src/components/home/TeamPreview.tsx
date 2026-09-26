@@ -104,7 +104,7 @@ export function TeamPreview() {
                             key={t.name}
                             className="inline-flex items-center gap-1.5 text-xs font-bold text-navy-900 bg-white px-2 py-0.5 rounded-lg border border-slate-200 shadow-2xs"
                           >
-                            {t.image && (
+                            {t.image ? (
                               <span className="relative w-4 h-4 rounded-full overflow-hidden shrink-0 ring-1 ring-teal-700/20">
                                 <Image
                                   src={t.image}
@@ -113,6 +113,10 @@ export function TeamPreview() {
                                   className={`object-cover ${t.imagePosition || "object-top"}`}
                                   sizes="16px"
                                 />
+                              </span>
+                            ) : (
+                              <span className="w-4 h-4 rounded-full bg-gradient-to-br from-navy-950 to-teal-800 text-[9px] text-white flex items-center justify-center font-bold shrink-0">
+                                {t.name[0]}
                               </span>
                             )}
                             {t.name}

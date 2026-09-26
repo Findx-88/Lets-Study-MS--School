@@ -10,7 +10,7 @@ import { BRAND, CONTACT } from "@/lib/constants";
 export const metadata: Metadata = {
   metadataBase: new URL("https://school.letsstudyms.com"),
   title: {
-    default: `${BRAND.fullName} | Expert Coaching Std 5–12 | Khardaha, Kolkata`,
+    default: `${BRAND.fullName} | Expert Coaching Std 5–12 | Kolkata`,
     template: `%s | ${BRAND.fullName}`,
   },
   description: BRAND.description,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: `${BRAND.fullName} | Expert Coaching for Std 5–12 | Khardaha, Kolkata`,
+    title: `${BRAND.fullName} | Expert Coaching for Std 5–12 | Kolkata`,
     description: BRAND.description,
     url: "https://school.letsstudyms.com",
     siteName: BRAND.fullName,
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${BRAND.fullName} | Expert Coaching for Std 5–12 | Khardaha, Kolkata`,
+    title: `${BRAND.fullName} | Expert Coaching for Std 5–12 | Kolkata`,
     description: BRAND.description,
     images: [BRAND.logoUrl],
   },

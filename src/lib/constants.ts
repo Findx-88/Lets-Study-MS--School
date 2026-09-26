@@ -200,7 +200,7 @@ export const FACULTY_LEVELS: readonly {
         tag: "Near-Peer Mentor",
       },
       {
-        name: "Arghyadeep",
+        name: "Arghadeep",
         fullName: "Arghadeep Ghosh",
         image: "/images/team/arghadeep.png",
         imagePosition: "object-top",
@@ -246,6 +246,19 @@ export const FACULTY_LEVELS: readonly {
         subjects: "Arts group, English (up to Class 8)",
         boards: "All Boards",
         teachingPhilosophy: "Focuses not only on completing the syllabus but on making sure students genuinely understand the concepts. Adapts teaching according to each student's learning level and creates an environment where they feel comfortable asking questions.",
+        tag: "Near-Peer Mentor",
+      },
+      {
+        name: "Ritam",
+        fullName: "Ritam Mandal",
+        degree: "B.Sc. Mathematics (Pursuing)",
+        experience: "2 Years",
+        subjects: "Class 11–12 Maths (JEE/Boards), Class 9–10 PCMB (Boards)",
+        boards: "CISCE, WB Board, CBSE Board",
+        achievements: "ICSE AIR-9, JEE Advanced Qualified, IAT Qualified, 100/100 in Mathematics (WBCHSE), Former student of RKMV",
+        studentAchievements: "ISC Topper of Assembly of God Church",
+        offlineLocations: "South Kolkata",
+        teachingPhilosophy: "Personalized teaching with strong conceptual clarity, exam-focused preparation, regular tests, continuous feedback, and individual study plans tailored to each learner.",
         tag: "Near-Peer Mentor",
       },
     ],
@@ -366,11 +379,11 @@ export const FACULTY_LEVELS: readonly {
         imagePosition: "object-[center_20%]",
         degree: "M.Sc. in Mathematics, B.Ed",
         experience: "12 Years",
-        achievements: "CTET Qualified",
-        subjects: "Mathematics (Class 8–12)",
-        boards: "CBSE, ICSE, WB Board & International",
-        teachingPhilosophy: "Good communication skills, regular tests, ability to understand a student individually. Mentoring students from all across the world reflects a proven and widely trusted teaching approach.",
-        studentAchievements: "Guided 98 percentile board toppers, successful candidates in JEE",
+        achievements: "CTET, STET, JEE Rank 5005",
+        subjects: "Mathematics (Class 9–12)",
+        boards: "All Boards (CBSE, ICSE, WB Board & International)",
+        teachingPhilosophy: "Good communication skills, regular tests, and the ability to understand each student individually. Teaching students from all across the world reflects high acceptability and trust.",
+        studentAchievements: "Guided 98 percenters, successful candidates in JEE and Olympiad",
         tag: "Expert Faculty",
       },
       {
@@ -533,7 +546,7 @@ export const TOTAL_FACULTY_COUNT = FACULTY_LEVELS.reduce(
 
 export const STATS = [
   { label: "Dedicated Mentors", value: TOTAL_FACULTY_COUNT, suffix: "" },
-  { label: "Max Batch Size", value: 5, suffix: " Students" },
+  { label: "Strict Micro-Batches", value: "3–5", suffix: " / Batch" },
   { label: "CBSE, ICSE, WB", value: 3, suffix: " Boards" },
 ];
 

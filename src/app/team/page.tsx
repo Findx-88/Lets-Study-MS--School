@@ -28,7 +28,9 @@ function TeacherCard({ teacher }: { teacher: TeacherProfile }) {
     >
       {/* Alternate ID anchors for spelling variants */}
       {primaryId === "sudeepta" && <span id="sudipta" className="absolute -top-28 pointer-events-none" />}
-      {primaryId === "arghyadeep" && <span id="arghadeep" className="absolute -top-28 pointer-events-none" />}
+      {(primaryId === "arghadeep" || primaryId === "arghyadeep") && (
+        <span id={primaryId === "arghadeep" ? "arghyadeep" : "arghadeep"} className="absolute -top-28 pointer-events-none" />
+      )}
       {/* Circular Avatar Header Area */}
       <div className="pt-6 pb-2 px-6 flex flex-col items-center text-center bg-gradient-to-b from-slate-50/70 via-white to-white">
         <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-md bg-slate-100 ring-2 ring-teal-500/30 shrink-0 group-hover:ring-teal-500/70 group-hover:scale-105 transition-all duration-300">

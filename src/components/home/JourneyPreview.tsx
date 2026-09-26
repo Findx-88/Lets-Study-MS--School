@@ -131,15 +131,15 @@ export function JourneyPreview() {
 
             {/* Bottom CTA Row: Aligned footer bar */}
             <div className="pt-5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-500 text-center sm:text-left">
                 Explore detailed syllabus breakdown, session rhythms, and transition roadmaps.
               </p>
               <Link
                 href="/journey"
-                className="btn-pill btn-primary text-xs !px-5 !py-2.5 inline-flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg whitespace-nowrap shrink-0"
+                className="btn-pill btn-primary text-xs !px-4 sm:!px-5 !py-2.5 w-full sm:w-auto inline-flex items-center justify-center text-center gap-2 shadow-md hover:shadow-lg shrink-0"
               >
                 <span>View Complete 5–12 Roadmap</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={14} className="shrink-0" />
               </Link>
             </div>
           </motion.div>

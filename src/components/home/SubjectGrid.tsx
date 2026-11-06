@@ -514,9 +514,9 @@ export function SubjectGrid() {
                   </span>
                 </div>
 
-                {/* Dropdown Indicator */}
-                <div className="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-amber-300">
-                  <span>{isCombinedExpanded ? "Package highlights" : "Hover / Tap for details"}</span>
+                {/* Dropdown Indicator — mobile only (desktop always shows content) */}
+                <div className="lg:hidden mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-amber-300">
+                  <span>{isCombinedExpanded ? "Package highlights" : "Tap for details"}</span>
                   <ChevronDown
                     size={16}
                     className={`transition-transform duration-300 ${
@@ -525,7 +525,23 @@ export function SubjectGrid() {
                   />
                 </div>
 
-                {/* Expandable Dropdown Drawer */}
+                {/* Package highlights — ALWAYS VISIBLE on desktop lg+ */}
+                <div className="hidden lg:block pt-4 space-y-2.5 text-xs text-slate-200 border-t border-white/10 mt-5">
+                  <div className="flex items-start gap-2.5 bg-white/5 p-2.5 rounded-xl border border-white/10">
+                    <CheckCircle2 size={15} className="text-amber-400 shrink-0 mt-0.5" />
+                    <span>Single point of contact for Science &amp; Commerce stream subjects.</span>
+                  </div>
+                  <div className="flex items-start gap-2.5 bg-white/5 p-2.5 rounded-xl border border-white/10">
+                    <CheckCircle2 size={15} className="text-amber-400 shrink-0 mt-0.5" />
+                    <span>Integrated monthly assessment reports with combined parent-teacher reviews.</span>
+                  </div>
+                  <div className="flex items-start gap-2.5 bg-white/5 p-2.5 rounded-xl border border-white/10">
+                    <CheckCircle2 size={15} className="text-amber-400 shrink-0 mt-0.5" />
+                    <span>High savings compared to hiring separate private tutors for individual subjects.</span>
+                  </div>
+                </div>
+
+                {/* Expandable Drawer — mobile tap only (lg:hidden) */}
                 <AnimatePresence initial={false}>
                   {isCombinedExpanded && (
                     <motion.div
@@ -534,7 +550,7 @@ export function SubjectGrid() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.35, ease: "easeInOut" }}
-                      className="overflow-hidden"
+                      className="overflow-hidden lg:hidden"
                     >
                       <div className="pt-4 space-y-2.5 text-xs text-slate-200 border-t border-white/10 mt-3">
                         <div className="flex items-start gap-2.5 bg-white/5 p-2.5 rounded-xl border border-white/10">

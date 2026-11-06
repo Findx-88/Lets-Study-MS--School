@@ -136,7 +136,7 @@ export function BoardStrip() {
                   {/* Distinctive Key Pill */}
                   <div className="flex items-center justify-between mt-2">
                     <span
-                      className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${config.badgeBg} ${config.badgeBorder} ${config.badgeText}`}
+                      className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border whitespace-nowrap ${config.badgeBg} ${config.badgeBorder} ${config.badgeText}`}
                     >
                       {config.keyPill}
                     </span>

@@ -200,10 +200,10 @@ export function Footer() {
           {/* Column 3: Academics & Boards (3 cols) */}
           <div className="lg:col-span-3">
             <h5 className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-4 font-heading">
-              Academics
+              Academics & Streams
             </h5>
             <ul className="space-y-2 text-xs text-navy-300">
-              {SUBJECTS.map((sub) => (
+              {SUBJECTS.slice(0, 5).map((sub) => (
                 <li key={sub.id}>
                   <Link
                     href={`/academics#${sub.id}`}
@@ -214,6 +214,24 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/academics#commerce"
+                  className="hover:text-teal-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1.5 group font-medium text-emerald-400"
+                >
+                  <span className="text-emerald-400 group-hover:translate-x-0.5 transition-transform">›</span>
+                  <span>Commerce Stream (Std 11–12)</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/academics"
+                  className="hover:text-amber-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1.5 group font-medium text-amber-400"
+                >
+                  <span className="text-amber-400 group-hover:translate-x-0.5 transition-transform">›</span>
+                  <span>Humanities & All Streams →</span>
+                </Link>
+              </li>
             </ul>
 
             <div className="mt-5 pt-3 border-t border-navy-800">

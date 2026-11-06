@@ -134,10 +134,12 @@ export default function RootLayout({
               email: "letsstudy2022bu@gmail.com",
               priceRange: "₹1,500 – ₹4,000/month",
               openingHours: "Mo-Su 08:00-21:00",
+              publiclyAccessible: false,
+              knowsLanguage: ["en", "bn", "hi"],
               areaServed: [
-                "Khardaha", "Barrackpore", "Sodepur", "Belgharia",
-                "Madhyamgram", "Barasat", "Rahara", "Dum Dum",
-                "Bardhaman", "North 24 Parganas", "Kolkata", "West Bengal", "India",
+                "Kolkata", "North 24 Parganas", "South 24 Parganas", "Howrah", "Hooghly",
+                "Khardaha", "Barrackpore", "Sodepur", "Belgharia", "Madhyamgram", "Barasat",
+                "Rahara", "Dum Dum", "West Bengal", "India", "International / NRI Cohorts"
               ],
               sameAs: [
                 CONTACT.social.facebook,
@@ -158,13 +160,19 @@ export default function RootLayout({
                 itemListElement: [
                   {
                     "@type": "OfferCatalog",
-                    name: "Level 1 & 2 — Class 5–10",
+                    name: "Live Online Micro-Batches — Class 5–12",
                     itemListElement: [
                       {
                         "@type": "Offer",
                         itemOffered: {
                           "@type": "Service",
-                          name: "Once-a-week coaching (Class 5–10)",
+                          name: "Live Interactive Google Meet Micro-Batches (Class 5–12)",
+                          serviceType: "Online Academic Tutoring",
+                          availableChannel: {
+                            "@type": "ServiceChannel",
+                            serviceUrl: "https://school.letsstudyms.com",
+                            serviceType: "Google Meet Live Online Classes",
+                          },
                         },
                         price: "1500",
                         priceCurrency: "INR",

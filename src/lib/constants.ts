@@ -695,7 +695,6 @@ export const STATS = [
   { label: "Dedicated Mentors", value: TOTAL_FACULTY_COUNT, suffix: "" },
   { label: "Strict Micro-Batches", value: "3–5", suffix: " / Batch" },
   { label: "CBSE, ICSE, WB, IB", value: 4, suffix: " Boards" },
-  { label: "Academic Streams", value: 3, suffix: " (Sci, Com, Hum)" },
 ];
 
 // ─── Testimonials ────────────────────────────────────────

@@ -43,10 +43,10 @@ export function SubjectGrid() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
           <div className="max-w-2xl">
             <span className="text-xs font-bold uppercase tracking-widest text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200 inline-block">
-              Complete Science & Language Mastery
+              Science, Language &amp; Commerce Mastery
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-heading text-navy-950 mt-3">
-              5 Core Disciplines, Taught from Fundamentals
+              Core Disciplines &amp; Commerce Stream
             </h2>
           </div>
           <Link
@@ -322,6 +322,136 @@ export function SubjectGrid() {
                 );
               })}
             </div>
+
+            {/* CARD 6: COMMERCE STREAM (FULL WIDTH OF LEFT COLUMN) */}
+            {(() => {
+              const isExpanded = activeCardId === "commerce";
+
+              return (
+                <motion.div
+                  key="commerce"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                  onMouseEnter={() => setActiveCardId("commerce")}
+                  onMouseLeave={() => setActiveCardId(null)}
+                  onClick={() => setActiveCardId(isExpanded ? null : "commerce")}
+                  className={`w-full rounded-3xl p-6 sm:p-7 bg-white border border-slate-200/90 shadow-sm transition-all duration-300 cursor-pointer overflow-hidden relative group hover:border-emerald-400 hover:shadow-emerald-500/10 ${
+                    isExpanded ? "shadow-xl ring-2 ring-emerald-500/20" : "hover:shadow-md"
+                  }`}
+                >
+                  {/* Top themed emerald gradient line */}
+                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-700" />
+                  {/* Background ambient glow */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-teal-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+
+                  {/* Floating Currency/Commerce Symbol in background */}
+                  <div className="absolute -bottom-8 right-6 text-8xl sm:text-9xl font-serif text-emerald-900/[0.04] group-hover:text-emerald-600/15 group-hover:-translate-y-3 group-hover:-rotate-6 transition-all duration-500 pointer-events-none select-none">
+                    ₹
+                  </div>
+
+                  <div className="relative z-10">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl font-serif font-black shadow-xs group-hover:scale-105 transition-transform bg-emerald-50 text-emerald-700 border border-emerald-200/80 shrink-0">
+                          ₹
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <h3 className="text-xl sm:text-2xl font-black font-heading text-navy-950 group-hover:text-emerald-800 transition-colors">
+                              Commerce Stream
+                            </h3>
+                            <span className="text-[10px] font-black uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300">
+                              New Stream
+                            </span>
+                          </div>
+                          <p className="text-xs text-slate-500 font-semibold mt-0.5">
+                            Accountancy • Business Studies • Economics • Applied Mathematics
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 self-start sm:self-auto">
+                        <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 shrink-0">
+                          Std 11–12
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap items-center justify-between gap-2 mt-2 pt-3 border-t border-slate-100">
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mr-1">
+                          Boards:
+                        </span>
+                        {["CBSE", "ISC", "WB Board", "IB Board"].map((b) => (
+                          <span
+                            key={b}
+                            className="text-[10px] font-bold text-slate-700 bg-slate-50 px-2 py-0.5 rounded-md border border-slate-200"
+                          >
+                            {b}
+                          </span>
+                        ))}
+                      </div>
+
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 group-hover:text-emerald-900 select-none">
+                        <span>{isExpanded ? "Hide Details" : "View Curriculum Highlights"}</span>
+                        <ChevronDown
+                          size={14}
+                          className={`transition-transform duration-300 ${
+                            isExpanded ? "rotate-180 text-emerald-800" : "text-slate-400"
+                          }`}
+                        />
+                      </span>
+                    </div>
+
+                    <AnimatePresence initial={false}>
+                      {isExpanded && (
+                        <motion.div
+                          key="commerce-dropdown"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.35, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pt-4 mt-3 border-t border-slate-100 space-y-3">
+                            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                              Dedicated academic support for commerce students covering financial statements, company accounts, management case studies, and graphical economic models with board exam answer-structuring frameworks.
+                            </p>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-emerald-50/40 p-3 rounded-2xl border border-emerald-100">
+                              {[
+                                "Balance sheet precision & step-by-step format mastery",
+                                "Case-study solving frameworks for Business Studies",
+                                "Micro & Macro economics curve mastery and statistics",
+                                "Past 10 years solved papers & CA Foundation alignment",
+                              ].map((hl, i) => (
+                                <div key={i} className="flex items-center gap-2 text-xs text-slate-700">
+                                  <CheckCircle2 size={14} className="text-emerald-600 shrink-0" />
+                                  <span>{hl}</span>
+                                </div>
+                              ))}
+                            </div>
+
+                            <div className="mt-3 flex justify-end">
+                              <Link
+                                href="/academics#accounts"
+                                onClick={(e) => e.stopPropagation()}
+                                className="text-xs font-bold text-emerald-700 hover:text-navy-950 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
+                              >
+                                <span>Explore Commerce Syllabus</span>
+                                <ArrowUpRight size={14} />
+                              </Link>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              );
+            })()}
           </div>
 
           {/* ═════════════════════════════════════════════════════════════
@@ -354,10 +484,10 @@ export function SubjectGrid() {
                 {/* Badge */}
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <span className="inline-flex items-center text-[11px] font-black uppercase tracking-wider text-navy-950 bg-gradient-to-r from-amber-400 to-amber-300 px-3 py-1 rounded-full shadow-md">
-                    Combined Course
+                    Combined Courses
                   </span>
                   <span className="text-[11px] font-bold text-teal-200 bg-white/10 px-2.5 py-1 rounded-full border border-white/15">
-                    All 5 Subjects
+                    Multi-Subject
                   </span>
                 </div>
 
@@ -366,12 +496,12 @@ export function SubjectGrid() {
                   className="text-2xl sm:text-3xl font-black font-heading !text-white text-white tracking-tight leading-snug mt-2"
                   style={{ color: "#ffffff" }}
                 >
-                  All 5 Subjects{" "}
-                  <span className="text-amber-300 block">Comprehensive Track</span>
+                  Science &amp; Commerce{" "}
+                  <span className="text-amber-300 block">Comprehensive Tracks</span>
                 </h3>
 
                 <p className="text-xs sm:text-sm text-slate-200 mt-3 leading-relaxed">
-                  Full Science + Maths + English micro-batch package with synchronized timetables so classes never clash with school tests or personal study.
+                  Synchronized micro-batch packages for Science (PCMB + English) and Commerce (Accounts + BST + Economics + Maths) with coordinated schedules that never clash.
                 </p>
 
                 {/* Quick Specs Pills */}
@@ -409,7 +539,7 @@ export function SubjectGrid() {
                       <div className="pt-4 space-y-2.5 text-xs text-slate-200 border-t border-white/10 mt-3">
                         <div className="flex items-start gap-2.5 bg-white/5 p-2.5 rounded-xl border border-white/10">
                           <CheckCircle2 size={15} className="text-amber-400 shrink-0 mt-0.5" />
-                          <span>Single point of contact for Maths, Physics, Chemistry, Biology & English.</span>
+                          <span>Single point of contact for Science &amp; Commerce stream subjects.</span>
                         </div>
                         <div className="flex items-start gap-2.5 bg-white/5 p-2.5 rounded-xl border border-white/10">
                           <CheckCircle2 size={15} className="text-amber-400 shrink-0 mt-0.5" />
@@ -417,7 +547,7 @@ export function SubjectGrid() {
                         </div>
                         <div className="flex items-start gap-2.5 bg-white/5 p-2.5 rounded-xl border border-white/10">
                           <CheckCircle2 size={15} className="text-amber-400 shrink-0 mt-0.5" />
-                          <span>High savings compared to hiring separate private tutors for 5 subjects.</span>
+                          <span>High savings compared to hiring separate private tutors for individual subjects.</span>
                         </div>
                       </div>
                     </motion.div>

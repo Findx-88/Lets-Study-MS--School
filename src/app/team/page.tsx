@@ -5,7 +5,7 @@ import { FACULTY_LEVELS, getWhatsAppUrl } from "@/lib/constants";
 import type { TeacherProfile } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Expert Mentors & Faculty — CBSE, ICSE & WB Board Coaching | Kolkata",
+  title: "Expert Mentors & Faculty — CBSE, ICSE, WB & IB Board Coaching | Kolkata",
   description: "Meet our dedicated educators across 4 tiers: from near-peer mentors to expert competitive faculty. Real profiles, real passion.",
   alternates: {
     canonical: "/team",

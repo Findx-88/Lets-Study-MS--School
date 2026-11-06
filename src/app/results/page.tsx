@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 export const metadata: Metadata = {
   title: "Student Results & Board Toppers",
   description:
-    "View board exam results and topper achievements from Let's Study MS School Program students across CBSE, ICSE and WB Board.",
+    "View board exam results and topper achievements from Let's Study MS School Program students across CBSE, ICSE, WB Board & IB.",
   alternates: {
     canonical: "/",
   },

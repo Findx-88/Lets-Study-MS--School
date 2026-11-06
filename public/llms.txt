@@ -4,7 +4,7 @@
 
 ## About
 
-Let's Study MS — School Program is an academic coaching institute in Khardaha, Kolkata (North 24 Parganas, West Bengal, India) for students in Standards 5–12. We cover CBSE, ICSE, and West Bengal Board curricula across Mathematics, Physics, Chemistry, Biology, and English.
+Let's Study MS — School Program is an academic coaching institute in Khardaha, Kolkata (North 24 Parganas, West Bengal, India) for students in Standards 5–12. We cover CBSE, ICSE/ISC, West Bengal Board, and IB Board curricula across three major streams: Science & Mathematics, Commerce, and Humanities.
 
 We operate with strict micro-batches of 3–5 students per batch and provide 1.5–2 hour intensive sessions. Our unique pedagogical model follows a 4-tier faculty hierarchy:
 - Level 1: College Student Teachers (near-peer mentors)
@@ -25,8 +25,9 @@ We operate with strict micro-batches of 3–5 students per batch and provide 1.5
 - **Affiliation:** Ramanujan School of Mathematics (RSM)
 - **Faculty:** 14 dedicated mentors across 4 qualification tiers
 - **Batch Size:** Strictly 3–5 students maximum
-- **Boards Covered:** CBSE, ICSE, WB Board (Madhyamik & HS)
-- **Subjects:** Mathematics, Physics, Chemistry, Biology, English
+- **Boards Covered:** CBSE, ICSE/ISC, WB Board (Madhyamik & HS), IB Board (MYP & DP)
+- **Academic Streams:** Science & Mathematics, Commerce, Humanities & Arts
+- **Subjects:** Mathematics, Physics, Chemistry, Biology, Computer Science/Coding, Accountancy, Business Studies, Economics, English, Social Sciences / Humanities
 - **Standards:** 5 through 12
 - **Session Duration:** 1.5–2 hours per session
 
@@ -66,6 +67,11 @@ Grammar mastery, creative & formal writing, textbook analysis, and vocabulary en
 - ISC AIR 1 (2022) guided by Moulisha Sarkar
 - Cambridge International Rankings (2024, 2025)
 - JEE and Olympiad successful candidates, 98 percenters guided by Annesha Ghosh
+- Full student testimonials and board mark breakdowns: https://school.letsstudyms.com/#results
+
+## International & NRI Student Online Cohorts
+
+We mentor Indian curriculum (CBSE & ICSE) and Cambridge/Edexcel students residing abroad (e.g. Lagos, Nigeria; UAE; Singapore; UK) with customized time-zone scheduling and 1-on-1 or 3-student micro-batches via live Google Meet. Specialized prep for Indian board exams, Olympiads, and competitive entrance foundations.
 
 ## Social Media
 

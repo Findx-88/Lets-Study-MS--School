@@ -53,7 +53,7 @@ const faqSchema = {
       name: "What boards does Let's Study MS cover?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We cover three major boards: CBSE (Central Board of Secondary Education), ICSE/ISC (Council for the Indian School Certificate Examinations), and WB Board (West Bengal Board of Secondary & Higher Secondary Education including Madhyamik and Uccha Madhyamik). Our curriculum tracks are tailored to each board's specific syllabus, evaluation patterns, and exam schedules.",
+        text: "We cover four major boards: CBSE (Central Board of Secondary Education), ICSE/ISC (Council for the Indian School Certificate Examinations), WB Board (West Bengal Board of Secondary & Higher Secondary Education including Madhyamik and Uccha Madhyamik), and IB Board (International Baccalaureate MYP & DP). Our curriculum tracks are tailored to each board's specific syllabus, evaluation patterns, and exam schedules.",
       },
     },
     {
@@ -66,10 +66,10 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "What subjects are taught at Let's Study MS School Program?",
+      name: "What streams and subjects are taught at Let's Study MS School Program?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We teach five core subjects: Mathematics (from algebra to calculus), Physics (mechanics to modern physics), Chemistry (physical, organic, inorganic), Biology (cell biology, physiology, genetics, ecology), and English (language, literature, grammar). All subjects are available for Standards 5 through 12.",
+        text: "We provide comprehensive coaching across three academic streams: (1) Science & Mathematics (Mathematics, Physics, Chemistry, Biology, and Computer Science & Coding), (2) Commerce (Accountancy, Business Studies, Economics, and Applied Mathematics), and (3) Humanities & Arts (English Literature & Language, History, Political Science, Geography, and Sociology). All streams are available for Standards 5 through 12 across CBSE, ICSE/ISC, WB Board, and IB.",
       },
     },
     {

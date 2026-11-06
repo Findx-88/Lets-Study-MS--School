@@ -5,7 +5,7 @@ import { FACULTY_LEVELS, getWhatsAppUrl } from "@/lib/constants";
 import type { TeacherProfile } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Our Teaching Team — Meet Our Educators",
+  title: "Expert Mentors & Faculty — CBSE, ICSE & WB Board Coaching | Kolkata",
   description: "Meet our dedicated educators across 4 tiers: from near-peer mentors to expert competitive faculty. Real profiles, real passion.",
   alternates: {
     canonical: "/team",
@@ -186,11 +186,34 @@ export default function TeamPage() {
     })),
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://school.letsstudyms.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Faculty & Mentors",
+        item: "https://school.letsstudyms.com/team",
+      },
+    ],
+  };
+
   return (
     <div className="pb-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(teamSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {/* Header */}
       <section className="bg-gradient-to-b from-teal-50/50 via-cream-50/30 to-white pt-24 pb-12 sm:pt-24 md:pt-36 md:pb-16 border-b border-slate-200/60 math-bg text-center">

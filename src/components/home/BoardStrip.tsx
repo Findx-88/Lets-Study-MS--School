@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, ChevronDown, Layers, BookOpen, GraduationCap, Award } from "lucide-react";
+import { CheckCircle2, ChevronDown, Layers, BookOpen, GraduationCap, Award, Globe } from "lucide-react";
 import { BOARDS } from "@/lib/constants";
 
 interface BoardVisualConfig {
@@ -55,6 +55,18 @@ const BOARD_CONFIGS: Record<string, BoardVisualConfig> = {
     icon: Award,
     keyPill: "Madhyamik & HS Precision",
   },
+  ib: {
+    accentColor: "from-purple-600 to-indigo-700",
+    badgeBg: "bg-purple-50",
+    badgeBorder: "border-purple-200",
+    badgeText: "text-purple-800",
+    glowBg: "from-purple-500/10 via-indigo-500/5 to-transparent",
+    cardBorderHover: "hover:border-purple-400 hover:shadow-purple-500/10",
+    iconBg: "bg-purple-100 text-purple-700",
+    iconColor: "text-purple-600",
+    icon: Globe,
+    keyPill: "Inquiry & Global Rigor",
+  },
 };
 
 export function BoardStrip() {
@@ -68,11 +80,11 @@ export function BoardStrip() {
             Curriculum Alignment
           </p>
           <h2 className="text-2xl sm:text-3xl font-black font-heading text-navy-950">
-            Syllabus Coaching for 3 Major Boards
+            Syllabus Coaching for 4 Major Boards
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-start">
           {BOARDS.map((board, idx) => {
             const config = BOARD_CONFIGS[board.id] || BOARD_CONFIGS.cbse;
             const Icon = config.icon;

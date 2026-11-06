@@ -12,8 +12,31 @@ export const metadata: Metadata = {
 };
 
 export default function FeesPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://school.letsstudyms.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Batches & Fees",
+        item: "https://school.letsstudyms.com/fees",
+      },
+    ],
+  };
+
   return (
     <div className="pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Header */}
       <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white pt-24 pb-12 sm:pt-24 md:pt-36 md:pb-20 border-b border-slate-200/60 math-bg text-center">
         <div className="max-w-4xl mx-auto px-4">

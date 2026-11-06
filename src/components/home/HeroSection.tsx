@@ -30,14 +30,24 @@ export function HeroSection() {
             className="lg:col-span-7 space-y-6 text-center lg:text-left"
           >
             {/* Top Tag / Pill */}
-            <div className="inline-flex items-center gap-2 bg-white/90 border border-teal-200/80 rounded-full px-4 py-1.5 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-              <span className="text-xs font-bold text-navy-900 uppercase tracking-wider">
-                CBSE • ICSE • WB Board
-              </span>
-              <span className="text-[10px] bg-amber-100 text-amber-800 font-semibold px-2 py-0.5 rounded-full">
-                Session 2026–27
-              </span>
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
+              <div className="inline-flex items-center gap-2 bg-white/90 border border-teal-200/80 rounded-full px-4 py-1.5 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                <span className="text-xs font-bold text-navy-900 uppercase tracking-wider">
+                  CBSE • ICSE • WB • IB Boards
+                </span>
+                <span className="text-[10px] bg-amber-100 text-amber-800 font-semibold px-2 py-0.5 rounded-full">
+                  Session 2026–27
+                </span>
+              </div>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-50 via-white to-amber-50 border border-teal-200/90 rounded-full px-3.5 py-1 shadow-xs">
+                <span className="text-[10px] font-black uppercase tracking-wider bg-teal-600 text-white px-2 py-0.5 rounded-full">
+                  New Streams
+                </span>
+                <span className="text-xs font-semibold text-navy-900">
+                  Commerce &amp; Humanities alongside Science
+                </span>
+              </div>
             </div>
 
             {/* Headline with Boo style layout warmth + Academic Rigor */}
@@ -141,6 +151,7 @@ export function HeroSection() {
                   src="/images/logo.png"
                   alt="Let's Study MS Logo"
                   fill
+                  sizes="44px"
                   className="object-contain"
                 />
               </div>

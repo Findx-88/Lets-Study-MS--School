@@ -5,7 +5,7 @@ import { ArrowRight, ExternalLink, GraduationCap, ShieldCheck, Sparkles, Target,
 import { BRAND, CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "About Us — Our Story & Academic Philosophy",
+  title: "About Let's Study MS — Micro-Batch Coaching Since 2022 | Khardaha, Kolkata",
   description: "Learn about Let's Study MS School Program — the school division of West Bengal's leading higher-mathematics institute. Affiliated with Ramanujan School of Mathematics (RSM).",
   alternates: {
     canonical: "/about",
@@ -13,8 +13,31 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://school.letsstudyms.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "About Us",
+        item: "https://school.letsstudyms.com/about",
+      },
+    ],
+  };
+
   return (
     <div className="pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Hero Header */}
       <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white pt-24 pb-12 sm:pt-24 md:pt-36 md:pb-20 border-b border-slate-200/60 math-bg">
         <div className="max-w-4xl mx-auto px-4 text-center">

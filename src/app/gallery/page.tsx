@@ -45,8 +45,48 @@ const GALLERY_ITEMS = [
 ];
 
 export default function GalleryPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://school.letsstudyms.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Class Gallery",
+        item: "https://school.letsstudyms.com/gallery",
+      },
+    ],
+  };
+
+  const gallerySchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name: "Live Online Class Gallery — Let's Study MS",
+    description: "Visual tour of live Google Meet interactive pods, digital whiteboard derivations, and focused school coaching sessions.",
+    image: GALLERY_ITEMS.map((item) => ({
+      "@type": "ImageObject",
+      contentUrl: `https://school.letsstudyms.com${item.image}`,
+      name: item.title,
+      description: item.caption,
+    })),
+  };
+
   return (
     <div className="pt-24 sm:pt-24 md:pt-28 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(gallerySchema) }}
+      />
       {/* Header */}
       <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white py-12 sm:py-16 border-b border-slate-200/60 math-bg text-center">
         <div className="max-w-4xl mx-auto px-4">

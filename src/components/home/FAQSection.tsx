@@ -7,7 +7,7 @@ const FAQ_ITEMS = [
   {
     question: "What boards does Let's Study MS cover?",
     answer:
-      "We cover three major boards: CBSE (Central Board of Secondary Education), ICSE/ISC (Council for the Indian School Certificate Examinations), and WB Board (West Bengal Board of Secondary & Higher Secondary Education including Madhyamik and Uccha Madhyamik). Our curriculum tracks are tailored to each board's specific syllabus, evaluation patterns, and exam schedules.",
+      "We cover four major boards: CBSE (Central Board of Secondary Education), ICSE/ISC (Council for the Indian School Certificate Examinations), WB Board (West Bengal Board of Secondary & Higher Secondary Education including Madhyamik and Uccha Madhyamik), and IB Board (International Baccalaureate MYP & DP). Our curriculum tracks are tailored to each board's specific syllabus, evaluation patterns, and exam schedules.",
   },
   {
     question: "What is the maximum batch size at Let's Study MS?",
@@ -15,9 +15,9 @@ const FAQ_ITEMS = [
       "We maintain strict micro-batches: pods of 3–4 students for Standards 5–6, and a maximum of 5 students per batch for Standards 7–12. This is a non-negotiable rule that ensures every student receives personal attention and has their doubts addressed individually.",
   },
   {
-    question: "What subjects are taught at Let's Study MS School Program?",
+    question: "What streams and subjects are taught at Let's Study MS School Program?",
     answer:
-      "We teach five core subjects: Mathematics (from algebra to calculus), Physics (mechanics to modern physics), Chemistry (physical, organic, inorganic), Biology (cell biology, physiology, genetics, ecology), and English (language, literature, grammar). All subjects are available for Standards 5 through 12.",
+      "We provide comprehensive coaching across three academic streams: (1) Science & Mathematics (Mathematics, Physics, Chemistry, Biology, and Computer Science & Coding), (2) Commerce (Accountancy, Business Studies, Economics, and Applied Mathematics), and (3) Humanities & Arts (English Literature & Language, History, Political Science, Geography, and Sociology). All streams are available for Standards 5 through 12 across CBSE, ICSE/ISC, WB Board, and IB.",
   },
   {
     question: "What are the fees at Let's Study MS?",

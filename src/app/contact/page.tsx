@@ -51,8 +51,11 @@ export default function ContactPage() {
       <section className="bg-gradient-to-b from-teal-50/70 via-cream-50 to-white pt-24 pb-12 sm:pt-24 md:pt-36 md:pb-20 border-b border-slate-200/60 math-bg text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h1 className="text-3xl sm:text-5xl font-black font-heading text-navy-950">
-            Ask any Question
+            Enquire About Admission & Batches
           </h1>
+          <p className="text-sm sm:text-base text-slate-600 mt-3 max-w-xl mx-auto leading-relaxed">
+            Get in touch for CBSE, ICSE, WB Board & IB coaching — Std 5 to 12, micro-batches of 3–5 students.
+          </p>
         </div>
       </section>
 
@@ -166,6 +169,7 @@ export default function ContactPage() {
                       <option value="ICSE">ICSE / ISC</option>
                       <option value="WB Board (English)">WB Board — English Medium</option>
                       <option value="WB Board (Bengali)">WB Board — Bengali Medium</option>
+                      <option value="IB Board">IB Board (MYP / DP)</option>
                     </select>
                   </div>
                 </div>

@@ -6,7 +6,7 @@ import type { TeacherProfile } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Expert Mentors & Faculty — CBSE, ICSE, WB & IB Board Coaching | Kolkata",
-  description: "Meet our dedicated educators across 4 tiers: from near-peer mentors to expert competitive faculty. Real profiles, real passion.",
+  description: "Meet our 14 dedicated educators across 4 tiers — from near-peer college mentors to IIT/IISER-level expert faculty. CBSE, ICSE, WB Board & IB coaching for Std 5–12 in Khardaha, Kolkata.",
   alternates: {
     canonical: "/team",
   },

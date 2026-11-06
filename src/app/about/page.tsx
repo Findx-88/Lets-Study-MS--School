@@ -6,7 +6,7 @@ import { BRAND, CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Let's Study MS — Micro-Batch Coaching Since 2022 | Khardaha, Kolkata",
-  description: "Learn about Let's Study MS School Program — the school division of West Bengal's leading higher-mathematics institute. Affiliated with Ramanujan School of Mathematics (RSM).",
+  description: "Learn about Let's Study MS School Program — the school division of West Bengal's leading higher-mathematics institute serving CBSE, ICSE, WB Board & IB students in Khardaha, Kolkata since 2022. Affiliated with Ramanujan School of Mathematics (RSM).",
   alternates: {
     canonical: "/about",
   },

@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
+# Allow AI search crawlers for GEO/AI Overview visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
 Sitemap: https://school.letsstudyms.com/sitemap.xml

@@ -19,17 +19,23 @@ export const metadata: Metadata = {
     "CBSE coaching West Bengal",
     "ICSE tuition Barasat",
     "WB Board coaching",
+    "IB coaching Kolkata",
     "class 5 to 12 tuition",
     "physics chemistry biology maths english coaching",
     "best tuition centre Kolkata",
     "small batch coaching West Bengal",
+    "online tuition Khardaha",
+    "online coaching North 24 Parganas",
     "Lets Study MS school program",
     "tuition in Khardaha",
     "coaching near Barrackpore",
     "maths tuition Sodepur",
     "CBSE coaching Madhyamgram",
+    "commerce coaching CBSE Kolkata",
+    "JEE foundation coaching Kolkata",
     "home tuition North 24 Parganas",
     "Ramanujan School of Mathematics",
+    "micro-batch online tuition West Bengal",
   ],
   authors: [{ name: BRAND.parentName }],
   alternates: {
@@ -60,10 +66,19 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
     icon: BRAND.logoIconUrl,
+    apple: BRAND.logoIconUrl,
+    shortcut: BRAND.logoIconUrl,
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -84,6 +99,7 @@ export default function RootLayout({
         <meta name="geo.placename" content="Khardaha, North 24 Parganas, West Bengal, India" />
         <meta name="geo.position" content="22.7214;88.3752" />
         <meta name="ICBM" content="22.7214, 88.3752" />
+        <meta name="theme-color" content="#0f1f3d" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -104,7 +120,7 @@ export default function RootLayout({
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "118/105, Rabindrapally, Khardaha",
-                addressLocality: "Kolkata",
+                addressLocality: "Khardaha",
                 addressRegion: "West Bengal",
                 postalCode: "700117",
                 addressCountry: "IN",

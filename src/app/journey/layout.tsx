@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Your Child's Learning Journey — Std 5 to 12 Pathway",
+  title: "Your Child's Learning Journey — Std 5 to 12 Pathway | Kolkata & Online",
   description:
-    "Explore the 4-stage learning journey at Let's Study MS: Foundation (Std 5–6), Building Blocks (Std 7–8), Board Prep (Std 9–10), and Specialization (Std 11–12). Each stage tailored with the right faculty tier.",
+    "Explore the 4-stage learning journey at Let's Study MS School Program: Foundation (Std 5–6), Building Blocks (Std 7–8), Board Prep (Std 9–10), and Specialization (Std 11–12) across CBSE, ICSE, WB & IB Boards.",
   alternates: {
     canonical: "/journey",
   },

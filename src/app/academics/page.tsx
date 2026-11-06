@@ -33,7 +33,7 @@ export default function AcademicsPage() {
         hasCourseInstance: subject.boards.map((board) => ({
           "@type": "CourseInstance",
           name: `${subject.name} — ${board}`,
-          courseMode: "Blended",
+          courseMode: "Online",
           courseWorkload: "PT1H30M to PT2H per session",
           instructor: {
             "@type": "Organization",

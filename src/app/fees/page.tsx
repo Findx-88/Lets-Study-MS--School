@@ -4,8 +4,8 @@ import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { FEE_TABLE, CONTACT, getWhatsAppUrl } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Batches & Fees — Transparent Pricing & Small Batch Rules",
-  description: "View our transparent fee structure for Class 5 to 12. Small batches of 3–5 students, 1.5–2 hour sessions, starting from ₹1,500/month. Khardaha, Kolkata.",
+  title: "Batches & Fees — Transparent Pricing (Class 5–12) | Kolkata & Online",
+  description: "Transparent fee structure for CBSE, ICSE, WB Board & IB (Class 5 to 12). Strict micro-batches of 3–5 students, starting from ₹1,500/month. Khardaha, Kolkata.",
   alternates: {
     canonical: "/fees",
   },

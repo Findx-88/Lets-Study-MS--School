@@ -125,7 +125,7 @@ export default function AboutPage() {
               Board + Future Entrance Bridge
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Syllabus alignment with CBSE, ICSE, and WB Board, built with the analytical foundation needed for competitive Olympiads, JEE/NEET, and higher mathematics.
+              Syllabus alignment with CBSE, ICSE, WB Board &amp; IB, built with the analytical foundation needed for competitive Olympiads, JEE/NEET, and higher mathematics.
             </p>
           </div>
         </div>
